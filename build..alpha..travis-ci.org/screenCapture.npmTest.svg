@@ -1,0 +1,138 @@
+<svg height="2158" width="720" xmlns="http://www.w3.org/2000/svg">
+<rect height="2158" fill="#555" width="720"></rect>
+<text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
+<tspan x="10" y="26"></tspan>
+<tspan x="10" y="42">&gt; npmdoc-mongo-express@0.0.1 test /home/travis/build/npmdoc/node-npmdoc-mongo-express</tspan>
+<tspan x="10" y="58">&gt; (set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)</tspan>
+<tspan x="10" y="74"></tspan>
+<tspan x="10" y="90"></tspan>
+<tspan x="10" y="106">[MODE_BUILD=npmTest] - 2017-04-03T10:01:53Z - npm-testing /home/travis/build/npmdoc/node-npmdoc-\</tspan>
+<tspan x="10" y="122">mongo-express</tspan>
+<tspan x="10" y="138"></tspan>
+<tspan x="10" y="154"></tspan>
+<tspan x="10" y="170">covering $ /home/travis/.nvm/versions/node/v6.10.1/bin/node /home/travis/build/npmdoc/node-npmdo\</tspan>
+<tspan x="10" y="186">c-mongo-express/test.js</tspan>
+<tspan x="10" y="202">merging file:///home/travis/build/npmdoc/node-npmdoc-mongo-express/tmp/build/test-report.json to\</tspan>
+<tspan x="10" y="218"> test-report</tspan>
+<tspan x="10" y="234">&gt; server listening on http-port 52291</tspan>
+<tspan x="10" y="250">No custom config.js found, loading config.default.js</tspan>
+<tspan x="10" y="266">Welcome to mongo-express</tspan>
+<tspan x="10" y="282">------------------------</tspan>
+<tspan x="10" y="298"></tspan>
+<tspan x="10" y="314"></tspan>
+<tspan x="10" y="330">created apidoc file:///home/travis/build/npmdoc/node-npmdoc-mongo-express/tmp/build/apidoc.html</tspan>
+<tspan x="10" y="346"></tspan>
+<tspan x="10" y="362"></tspan>
+<tspan x="10" y="378">browserTest - created electron entry-page /home/travis/build/npmdoc/node-npmdoc-mongo-express/tm\</tspan>
+<tspan x="10" y="394">p/electron.15b334385540.9b9d8e9b5b5fe.html</tspan>
+<tspan x="10" y="410"></tspan>
+<tspan x="10" y="426">[node test-case 1 of 6 passed] - testCase_buildLib_default</tspan>
+<tspan x="10" y="442">[node test-case 2 of 6 passed] - testCase_buildReadme_default</tspan>
+<tspan x="10" y="458">[node test-case 3 of 6 passed] - testCase_buildTest_default</tspan>
+<tspan x="10" y="474"></tspan>
+<tspan x="10" y="490">browserTest - created electron entry-page /home/travis/build/npmdoc/node-npmdoc-mongo-express/tm\</tspan>
+<tspan x="10" y="506">p/electron.15b334385980.d0bd7d1359d4b.html</tspan>
+<tspan x="10" y="522"></tspan>
+<tspan x="10" y="538">Mongo Express server listening at http://localhost:8081</tspan>
+<tspan x="10" y="554">basicAuth credentials are "admin:pass", it is recommended you change this in your config.js!</tspan>
+<tspan x="10" y="570">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
+<tspan x="10" y="586">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
+<tspan x="10" y="602">merging file:///home/travis/build/npmdoc/node-npmdoc-mongo-express/tmp/build/test-report.json to\</tspan>
+<tspan x="10" y="618"> test-report</tspan>
+<tspan x="10" y="634">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
+<tspan x="10" y="650">&gt; server listening on http-port 45794</tspan>
+<tspan x="10" y="666">[4927:0403/100155:WARNING:audio_manager.cc(314)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="682">[4927:0403/100155:WARNING:audio_manager.cc(275)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="698">[4966:0403/100155:ERROR:sandbox_linux.cc(343)] InitializeSandbox() called with multiple threads \</tspan>
+<tspan x="10" y="714">in process gpu-process. </tspan>
+<tspan x="10" y="730">[4927:0403/100155:ERROR:browser_gpu_channel_host_factory.cc(131)] Failed to create channel.</tspan>
+<tspan x="10" y="746">merging file:///home/travis/build/npmdoc/node-npmdoc-mongo-express/tmp/build/test-report.json to\</tspan>
+<tspan x="10" y="762"> test-report</tspan>
+<tspan x="10" y="778">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
+<tspan x="10" y="794">[4938:0403/100155:WARNING:audio_manager.cc(314)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="810">[4938:0403/100155:WARNING:audio_manager.cc(275)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="826">[5000:0403/100156:ERROR:sandbox_linux.cc(343)] InitializeSandbox() called with multiple threads \</tspan>
+<tspan x="10" y="842">in process gpu-process. </tspan>
+<tspan x="10" y="858">[4938:0403/100156:ERROR:browser_gpu_channel_host_factory.cc(131)] Failed to create channel.</tspan>
+<tspan x="10" y="874"></tspan>
+<tspan x="10" y="890">browserTest - opened url /home/travis/build/npmdoc/node-npmdoc-mongo-express/tmp/build/apidoc.ht\</tspan>
+<tspan x="10" y="906">ml</tspan>
+<tspan x="10" y="922"></tspan>
+<tspan x="10" y="938"></tspan>
+<tspan x="10" y="954">browserTest - opened url http://127.0.0.1:52291?modeTest=1</tspan>
+<tspan x="10" y="970"></tspan>
+<tspan x="10" y="986">[4938:0403/100157:INFO:CONSOLE(245)] "----------|-----------|-----------|-----------|-----------\</tspan>
+<tspan x="10" y="1002">|</tspan>
+<tspan x="10" y="1018">File      |   % Stmts |% Branches |   % Funcs |   % Lines |</tspan>
+<tspan x="10" y="1034">----------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1050">----------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1066">All files |       100 |       100 |       100 |       100 |</tspan>
+<tspan x="10" y="1082">----------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1098">", source: file:///home/travis/build/npmdoc/node-npmdoc-mongo-express/tmp/electron.15b334385980.\</tspan>
+<tspan x="10" y="1114">d0bd7d1359d4b.html (245)</tspan>
+<tspan x="10" y="1130">[4938:0403/100157:INFO:CONSOLE(245)] "created coverage file:///tmp/build/coverage.html/index.htm\</tspan>
+<tspan x="10" y="1146">l", source: file:///home/travis/build/npmdoc/node-npmdoc-mongo-express/tmp/electron.15b334385980\</tspan>
+<tspan x="10" y="1162">.d0bd7d1359d4b.html (245)</tspan>
+<tspan x="10" y="1178">[node test-case 4 of 6 passed] - testCase_buildApp_default</tspan>
+<tspan x="10" y="1194"></tspan>
+<tspan x="10" y="1210">browserTest - created screenCapture file:///home/travis/build/npmdoc/node-npmdoc-mongo-express/t\</tspan>
+<tspan x="10" y="1226">mp/build/screenCapture.npmTest.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-mongo-exp\</tspan>
+<tspan x="10" y="1242">ress_2Ftmp_2Fbuild_2Fapidoc.html.png</tspan>
+<tspan x="10" y="1258"></tspan>
+<tspan x="10" y="1274">browserTest - created screenCapture file:///home/travis/build/npmdoc/node-npmdoc-mongo-express/t\</tspan>
+<tspan x="10" y="1290">mp/build/screenCapture.npmTest.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-mongo-exp\</tspan>
+<tspan x="10" y="1306">ress_2Ftmp_2Fbuild_2Fapidoc.html.html</tspan>
+<tspan x="10" y="1322"></tspan>
+<tspan x="10" y="1338">browserTest - exit-code 0 - /home/travis/build/npmdoc/node-npmdoc-mongo-express/tmp/build/apidoc\</tspan>
+<tspan x="10" y="1354">.html</tspan>
+<tspan x="10" y="1370"></tspan>
+<tspan x="10" y="1386">[node test-case 5 of 6 passed] - testCase_buildApidoc_default</tspan>
+<tspan x="10" y="1402"></tspan>
+<tspan x="10" y="1418">browserTest - created screenCapture file:///home/travis/build/npmdoc/node-npmdoc-mongo-express/t\</tspan>
+<tspan x="10" y="1434">mp/build/screenCapture.npmTest.browser..png</tspan>
+<tspan x="10" y="1450"></tspan>
+<tspan x="10" y="1466">browserTest - created screenCapture file:///home/travis/build/npmdoc/node-npmdoc-mongo-express/t\</tspan>
+<tspan x="10" y="1482">mp/build/screenCapture.npmTest.browser..html</tspan>
+<tspan x="10" y="1498"></tspan>
+<tspan x="10" y="1514">browserTest - exit-code 0 - http://127.0.0.1:52291?modeTest=1</tspan>
+<tspan x="10" y="1530"></tspan>
+<tspan x="10" y="1546"></tspan>
+<tspan x="10" y="1562">browserTest - merged coverage from /home/travis/build/npmdoc/node-npmdoc-mongo-express/tmp/cover\</tspan>
+<tspan x="10" y="1578">age.npmTest.browser.%2F.json</tspan>
+<tspan x="10" y="1594"></tspan>
+<tspan x="10" y="1610"></tspan>
+<tspan x="10" y="1626">browserTest - merging test-report from /home/travis/build/npmdoc/node-npmdoc-mongo-express/tmp/t\</tspan>
+<tspan x="10" y="1642">est-report.npmTest.browser.%2F.json</tspan>
+<tspan x="10" y="1658"></tspan>
+<tspan x="10" y="1674">[node test-case 6 of 6 passed] - testCase_webpage_default</tspan>
+<tspan x="10" y="1690">----------------------------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1706">File                              |   % Stmts |% Branches |   % Funcs |   % Lines |</tspan>
+<tspan x="10" y="1722">----------------------------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1738">   node-npmdoc-mongo-express/     |       100 |       100 |       100 |       100 |</tspan>
+<tspan x="10" y="1754">      example.js                  |       100 |       100 |       100 |       100 |</tspan>
+<tspan x="10" y="1770">      lib.npmdoc_mongo_express.js |       100 |       100 |       100 |       100 |</tspan>
+<tspan x="10" y="1786">      test.js                     |       100 |       100 |       100 |       100 |</tspan>
+<tspan x="10" y="1802">----------------------------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1818">All files                         |       100 |       100 |       100 |       100 |</tspan>
+<tspan x="10" y="1834">----------------------------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1850"></tspan>
+<tspan x="10" y="1866">created coverage file:///home/travis/build/npmdoc/node-npmdoc-mongo-express/tmp/build/coverage.h\</tspan>
+<tspan x="10" y="1882">tml/index.html</tspan>
+<tspan x="10" y="1898">merging file:///home/travis/build/npmdoc/node-npmdoc-mongo-express/tmp/build/test-report.json to\</tspan>
+<tspan x="10" y="1914"> test-report</tspan>
+<tspan x="10" y="1930"></tspan>
+<tspan x="10" y="1946">-------------------------------------------------------</tspan>
+<tspan x="10" y="1962">| test-report - buildNpmdoc - node - linux v6.10.1 - 2017-04-03T10:01:37.920Z</tspan>
+<tspan x="10" y="1978">|   27167 ms            0 failed        6 passed      |</tspan>
+<tspan x="10" y="1994">-------------------------------------------------------</tspan>
+<tspan x="10" y="2010"></tspan>
+<tspan x="10" y="2026">created test-report file:///home/travis/build/npmdoc/node-npmdoc-mongo-express/tmp/build/test-re\</tspan>
+<tspan x="10" y="2042">port.html</tspan>
+<tspan x="10" y="2058"></tspan>
+<tspan x="10" y="2074"></tspan>
+<tspan x="10" y="2090">npmTest - 0 failed tests</tspan>
+<tspan x="10" y="2106"></tspan>
+<tspan x="10" y="2122"></tspan>
+<tspan x="10" y="2138">[MODE_BUILD=npmTest] - 2017-04-03T10:02:08Z - EXIT_CODE - 0</tspan>
+</text>
+</svg>

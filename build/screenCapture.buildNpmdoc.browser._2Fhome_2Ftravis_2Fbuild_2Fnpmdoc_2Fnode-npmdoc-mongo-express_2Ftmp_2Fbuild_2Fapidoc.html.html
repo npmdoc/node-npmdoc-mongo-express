@@ -1,0 +1,1018 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/mongo-express/mongo-express#readme">mongo-express (v0.39.1)</a>
+</h1>
+<h4>Web-based admin interface for MongoDB</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mongo-express">module mongo-express</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mongo-express.</span>bson</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mongo-express.</span>filters</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mongo-express.</span>json</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mongo-express.</span>utils</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mongo-express.bson">module mongo-express.bson</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.bson.getSandbox">
+            function <span class="apidocSignatureSpan">mongo-express.bson.</span>getSandbox
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.bson.hexToObjectId">
+            function <span class="apidocSignatureSpan">mongo-express.bson.</span>hexToObjectId
+            <span class="apidocSignatureSpan">(string)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.bson.toBSON">
+            function <span class="apidocSignatureSpan">mongo-express.bson.</span>toBSON
+            <span class="apidocSignatureSpan">(string)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.bson.toJsonString">
+            function <span class="apidocSignatureSpan">mongo-express.bson.</span>toJsonString
+            <span class="apidocSignatureSpan">(doc)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.bson.toObjectId">
+            function <span class="apidocSignatureSpan">mongo-express.bson.</span>toObjectId
+            <span class="apidocSignatureSpan">(string)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.bson.toSafeBSON">
+            function <span class="apidocSignatureSpan">mongo-express.bson.</span>toSafeBSON
+            <span class="apidocSignatureSpan">(string)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.bson.toString">
+            function <span class="apidocSignatureSpan">mongo-express.bson.</span>toString
+            <span class="apidocSignatureSpan">(doc)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mongo-express.filters">module mongo-express.filters</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.filters.convertBytes">
+            function <span class="apidocSignatureSpan">mongo-express.filters.</span>convertBytes
+            <span class="apidocSignatureSpan">(input)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.filters.is_embeddedDocumentNotation">
+            function <span class="apidocSignatureSpan">mongo-express.filters.</span>is_embeddedDocumentNotation
+            <span class="apidocSignatureSpan">(input)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.filters.json">
+            function <span class="apidocSignatureSpan">mongo-express.filters.</span>json
+            <span class="apidocSignatureSpan">(input)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.filters.stringDocIDs">
+            function <span class="apidocSignatureSpan">mongo-express.filters.</span>stringDocIDs
+            <span class="apidocSignatureSpan">(input)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.filters.to_display">
+            function <span class="apidocSignatureSpan">mongo-express.filters.</span>to_display
+            <span class="apidocSignatureSpan">(input)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.filters.to_string">
+            function <span class="apidocSignatureSpan">mongo-express.filters.</span>to_string
+            <span class="apidocSignatureSpan">(input)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mongo-express.json">module mongo-express.json</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.json.stringify">
+            function <span class="apidocSignatureSpan">mongo-express.json.</span>stringify
+            <span class="apidocSignatureSpan">(value, replacer, space)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mongo-express.utils">module mongo-express.utils</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.utils.buildCollectionURL">
+            function <span class="apidocSignatureSpan">mongo-express.utils.</span>buildCollectionURL
+            <span class="apidocSignatureSpan">(base, dbName, collectionName)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.utils.bytesToSize">
+            function <span class="apidocSignatureSpan">mongo-express.utils.</span>bytesToSize
+            <span class="apidocSignatureSpan">(bytes)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.utils.colsToGrid">
+            function <span class="apidocSignatureSpan">mongo-express.utils.</span>colsToGrid
+            <span class="apidocSignatureSpan">(cols)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.utils.deepmerge">
+            function <span class="apidocSignatureSpan">mongo-express.utils.</span>deepmerge
+            <span class="apidocSignatureSpan">(target, src)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.utils.roughSizeOfObject">
+            function <span class="apidocSignatureSpan">mongo-express.utils.</span>roughSizeOfObject
+            <span class="apidocSignatureSpan">(object)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mongo-express" id="apidoc.module.mongo-express">module mongo-express</a></h1>
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mongo-express.bson" id="apidoc.module.mongo-express.bson">module mongo-express.bson</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mongo-express.bson.getSandbox" id="apidoc.element.mongo-express.bson.getSandbox">
+        function <span class="apidocSignatureSpan">mongo-express.bson.</span>getSandbox
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getSandbox = function () {
+  return {
+    Long: mongodb.Long,
+    NumberLong: mongodb.Long,
+    Double: mongodb.Double,
+    NumberDouble: mongodb.Double,
+    ObjectId: mongodb.ObjectID,
+    ObjectID: mongodb.ObjectID,
+    Timestamp: Timestamp,
+    DBRef: DBRef,
+    Dbref: DBRef,
+    Binary: mongodb.Binary,
+    BinData: mongodb.Binary,
+    Code: mongodb.Code,
+    Symbol: mongodb.Symbol,
+    MinKey: mongodb.MinKey,
+    MaxKey: mongodb.MaxKey,
+    ISODate: Date,
+    Date: Date,
+    Buffer: Buffer,
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+};
+};
+
+//JSON.parse doesn't support BSON data types
+//Document is evaluated in a vm in order to support BSON data types
+//Sandbox contains BSON data type functions from node-mongodb-native
+exports.toBSON = function (string) {
+var sandbox = exports.<span class="apidocCodeKeywordSpan">getSandbox</span>();
+
+string = string.replace(/ISODate\(/g, 'new ISODate(');
+string = string.replace(/Binary\(("[^"]+"),/g, 'Binary(new Buffer($1, "base64"),');
+
+vm.runInNewContext('doc = eval((' + string + '));', sandbox);
+
+return sandbox.doc;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongo-express.bson.hexToObjectId" id="apidoc.element.mongo-express.bson.hexToObjectId">
+        function <span class="apidocSignatureSpan">mongo-express.bson.</span>hexToObjectId
+        <span class="apidocSignatureSpan">(string)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hexToObjectId = function (string) {
+  if (!/^[0-9a-f]{24}$/.test(string)) {
+    return false;
+  }
+  var sandbox = exports.getSandbox();
+  return sandbox.ObjectID(string);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongo-express.bson.toBSON" id="apidoc.element.mongo-express.bson.toBSON">
+        function <span class="apidocSignatureSpan">mongo-express.bson.</span>toBSON
+        <span class="apidocSignatureSpan">(string)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toBSON = function (string) {
+  var sandbox = exports.getSandbox();
+
+  string = string.replace(/ISODate\(/g, 'new ISODate(');
+  string = string.replace(/Binary\(("[^"]+"),/g, 'Binary(new Buffer($1, "base64"),');
+
+  vm.runInNewContext('doc = eval((' + string + '));', sandbox);
+
+  return sandbox.doc;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+};
+
+// This function as the name suggests attempts to parse
+// the free form string in to BSON, since the possibilities of failure
+// are higher, this function uses a try..catch
+exports.toSafeBSON = function (string) {
+  try {
+    var bsonObject = exports.<span class="apidocCodeKeywordSpan">toBSON</span>(string);
+    return bsonObject;
+  } catch (err) {
+    return null;
+  }
+};
+
+// Converts string to ObjectID.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongo-express.bson.toJsonString" id="apidoc.element.mongo-express.bson.toJsonString">
+        function <span class="apidocSignatureSpan">mongo-express.bson.</span>toJsonString
+        <span class="apidocSignatureSpan">(doc)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toJsonString = function (doc) {
+  let sJson = json.stringify(doc, null);
+  sJson = sJson.replace(/ObjectID\(([^)]+)\)/g, '{ "$oid": $1 }');
+  sJson = sJson.replace(/DBRef\(([^)]+)\)/g, '{ "$ref": $1 }');
+  sJson = sJson.replace(/ISODate\(([^)]+)\)/g, '$1');
+  return sJson;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongo-express.bson.toObjectId" id="apidoc.element.mongo-express.bson.toObjectId">
+        function <span class="apidocSignatureSpan">mongo-express.bson.</span>toObjectId
+        <span class="apidocSignatureSpan">(string)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toObjectId = function (string) {
+  var sandbox = exports.getSandbox();
+
+  // Validation
+  if (
+    !string ||                                            // No input at all
+    string === '' ||                                      // empty string
+    string.toUpperCase().indexOf('OBJECTID(') === -1 ||   // missing the opening 'ObjectID('
+    string.indexOf(')') === -1                            // missing the closing '('
+  ) {
+    return false;
+  }
+
+  // Strip quotes
+  string = string.replace('"', '').replace('"', '');
+
+  // Convert ObjectId("526ddf5a9f610ffd26000001") to 526ddf5a9f610ffd26000001
+  string = string.replace(/ObjectID\(/i, '').replace(')', '');
+
+  // Make sure it's a 24-character string to prevent errors.
+  if (string.length === 24) {
+    return sandbox.ObjectID(string);
+  } else {
+    return false;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+var DBRef = function (namespace, oid, db) {
+  //Allow empty/undefined db value
+  if (db === undefined || db === null) {
+    db = '';
+  }
+
+  var objectId = exports.<span class="apidocCodeKeywordSpan">toObjectId</span>(oid);
+  if (objectId === false) {
+    objectId = mongodb.ObjectId(oid);
+  }
+  return mongodb.DBRef(namespace, objectId, db);
+};
+
+var Timestamp = function (high, low) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongo-express.bson.toSafeBSON" id="apidoc.element.mongo-express.bson.toSafeBSON">
+        function <span class="apidocSignatureSpan">mongo-express.bson.</span>toSafeBSON
+        <span class="apidocSignatureSpan">(string)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toSafeBSON = function (string) {
+  try {
+    var bsonObject = exports.toBSON(string);
+    return bsonObject;
+  } catch (err) {
+    return null;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongo-express.bson.toString" id="apidoc.element.mongo-express.bson.toString">
+        function <span class="apidocSignatureSpan">mongo-express.bson.</span>toString
+        <span class="apidocSignatureSpan">(doc)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function (doc) {
+  //Use custom json stringify function from json.js
+  return json.stringify(doc, null, '    ');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+exports.json = function (input) {
+return JSON.stringify(input, null, '    ');
+};
+
+exports.convertBytes = function (input) {
+input = parseInt(input, 10);
+if (input &lt; 1024) {
+  return input.<span class="apidocCodeKeywordSpan">toString</span>() + ' Bytes';
+} else if (input &lt; 1024 * 1024) {
+  //Convert to KB and keep 2 decimal values
+  input = Math.round((input / 1024) * 100) / 100;
+  return input.toString() + ' KB';
+} else if (input &lt; 1024 * 1024 * 1024) {
+  input = Math.round((input / (1024 * 1024)) * 100) / 100;
+  return input.toString() + ' MB';
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mongo-express.filters" id="apidoc.module.mongo-express.filters">module mongo-express.filters</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mongo-express.filters.convertBytes" id="apidoc.element.mongo-express.filters.convertBytes">
+        function <span class="apidocSignatureSpan">mongo-express.filters.</span>convertBytes
+        <span class="apidocSignatureSpan">(input)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">convertBytes = function (input) {
+  input = parseInt(input, 10);
+  if (input &lt; 1024) {
+    return input.toString() + ' Bytes';
+  } else if (input &lt; 1024 * 1024) {
+    //Convert to KB and keep 2 decimal values
+    input = Math.round((input / 1024) * 100) / 100;
+    return input.toString() + ' KB';
+  } else if (input &lt; 1024 * 1024 * 1024) {
+    input = Math.round((input / (1024 * 1024)) * 100) / 100;
+    return input.toString() + ' MB';
+  } else if (input &lt; 1024 * 1024 * 1024 * 1024) {
+    input = Math.round((input / (1024 * 1024 * 1024)) * 100) / 100;
+    return input.toString() + ' GB';
+  } else if (input &lt; 1024 * 1024 * 1024 * 1024 * 1024) {
+    input = Math.round((input / (1024 * 1024 * 1024 * 1024)) * 100) / 100;
+    return input.toString() + ' TB';
+  } else {
+    return input.toString() + ' Bytes';
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongo-express.filters.is_embeddedDocumentNotation" id="apidoc.element.mongo-express.filters.is_embeddedDocumentNotation">
+        function <span class="apidocSignatureSpan">mongo-express.filters.</span>is_embeddedDocumentNotation
+        <span class="apidocSignatureSpan">(input)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">is_embeddedDocumentNotation = function (input) {
+  return /^(?:[a-zA-Z0-9_]+\.)+[a-zA-Z0-9_]+/.test(input);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongo-express.filters.json" id="apidoc.element.mongo-express.filters.json">
+        function <span class="apidocSignatureSpan">mongo-express.filters.</span>json
+        <span class="apidocSignatureSpan">(input)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">json = function (input) {
+  return JSON.stringify(input, null, '    ');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongo-express.filters.stringDocIDs" id="apidoc.element.mongo-express.filters.stringDocIDs">
+        function <span class="apidocSignatureSpan">mongo-express.filters.</span>stringDocIDs
+        <span class="apidocSignatureSpan">(input)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">stringDocIDs = function (input) {
+
+  // Turns {_bsontype: ' ObjectID', id:12345... } into a plain string
+  if (input &amp;&amp; typeof input === 'object' &amp;&amp; input._bsontype === 'ObjectID') {
+    return input.toString();
+  }
+
+  return input;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongo-express.filters.to_display" id="apidoc.element.mongo-express.filters.to_display">
+        function <span class="apidocSignatureSpan">mongo-express.filters.</span>to_display
+        <span class="apidocSignatureSpan">(input)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">to_display = function (input) {
+
+  var entifyGTLTAmp = function (text) {
+    // Turn &lt; ? &gt; into HTML entities, so data doesn't get interpreted by the browser
+    return text.replace(/&amp;/g, '&amp;amp;')
+      .replace(/&lt;/g, '&amp;lt;')
+      .replace(/&gt;/g, '&amp;gt;')
+      .replace(/"/g, '&amp;quot;')
+      .replace(/'/g, '&amp;apos;');
+  };
+
+  var retHTML = '';
+
+  // Get nulls out of the way
+  if (input === null || input === undefined) {
+    return '';
+  }
+
+  // Large property
+  if (
+    typeof input === 'object' &amp;&amp;
+    input.display &amp;&amp;
+    input.display === '*** LARGE PROPERTY ***' &amp;&amp;
+    input.preview &amp;&amp;
+    input.roughSz &amp;&amp;
+    input.humanSz &amp;&amp;
+    input.attribu &amp;&amp;
+    input.maxSize &amp;&amp;
+    input._id
+  ) {
+    retHTML += '&lt;div class="tooDamnBig" doc_id="' + encodeURIComponent(JSON.stringify(input._id)) + '" ' +
+      'doc_prop="' + input.attribu + '" title="Max prop size: ' + input.maxSize + '"&gt;';
+    retHTML += input.display + '&lt;br&gt;~' + input.humanSz;
+    retHTML += '&lt;br&gt;Preview:' + input.preview;
+    retHTML += '&lt;br&gt;Click to fetch this property';
+    retHTML += '&lt;/div&gt;';
+    return retHTML;
+  }
+
+  // Large row
+  if (
+    typeof input === 'object' &amp;&amp;
+    input.display &amp;&amp;
+    input.display === '*** LARGE ROW ***' &amp;&amp;
+    input.preview &amp;&amp;
+    input.roughSz &amp;&amp;
+    input.humanSz &amp;&amp;
+    input.attribu &amp;&amp;
+    input.maxSize &amp;&amp;
+    input._id
+  ) {
+    retHTML += '&lt;div class="tooDamnBig" doc_id="' + encodeURIComponent(JSON.stringify(input._id)) + '" ' +
+      'doc_prop="' + input.attribu + '" title="Max row size: ' + input.maxSize + '"&gt;';
+    retHTML += input.display + '&lt;br&gt;' + input.attribu + ': ~' + input.humanSz;
+    retHTML += '&lt;br&gt;Preview:' + input.preview;
+    retHTML += '&lt;br&gt;Click to fetch this property';
+    retHTML += '&lt;/div&gt;';
+    return retHTML;
+  }
+
+  // Images inline
+  if (
+    typeof input === 'string' &amp;&amp;
+    (
+      input.substr(0, 22) === 'data:image/png;base64,' ||
+      input.substr(0, 22) === 'data:image/gif;base64,' ||
+      input.substr(0, 22) === 'data:image/jpg;base64,' ||
+      input.substr(0, 23) === 'data:image/jpeg;base64,'
+    )
+  )  {
+    return '&lt;img src="' + input + '" style="max-height:100%; max-width:100%; "/&gt;';
+  }
+
+  // Audio inline
+  if (
+    typeof input === 'string' &amp;&amp;
+    (
+      input.substr(0, 22) === 'data:audio/ogg;base64,' ||
+      input.substr(0, 22) === 'data:audio/mp3;base64,'
+    )
+  )  {
+    return '&lt;audio controls style="width:45px;" src="' + input + '"&gt;Your browser does not support the audio element.&lt;/audio&gt;';
+  }
+
+  // Video inline
+  if (
+    typeof input === 'string' &amp;&amp;
+    (
+      input.substr(0, 23) === 'data:video/webm;base64,' ||
+      input.substr(0, 22) === 'data:video/mp4;base64,'  ||
+      input.substr(0, 22) === 'data:video/ogv;base64,'
+    )
+  )  {
+    return '&lt;video controls&gt;&lt;source type="' + input.substring(input.indexOf(':') + 1, input.indexOf(';')) + '" src="' + input + '"/&gt;' +
+      'Your browser does not support the video element.&lt;/video&gt;';
+  }
+
+  if (typeof input === 'object' &amp;&amp; input.toString().substr(0, 15) === '[object Object]') {
+    return '&lt;pre&gt;' + JSON.stringify(input, null, 2) + '&lt;/pre&gt;';
+  }
+
+  // Concatenate long strings
+  if (typeof input === 'string' &amp;&amp; input.length &gt; 50) {
+    return entifyGTLTAmp(input.substr(0, 49) + 'â€¦');
+  }
+
+  // Return basic .toString() since we've tried all other cases
+  return entifyGTLTAmp(input.toString());
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongo-express.filters.to_string" id="apidoc.element.mongo-express.filters.to_string">
+        function <span class="apidocSignatureSpan">mongo-express.filters.</span>to_string
+        <span class="apidocSignatureSpan">(input)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">to_string = function (input) {
+  return (input !== null &amp;&amp; input !== undefined) ? input.toString() : '';
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mongo-express.json" id="apidoc.module.mongo-express.json">module mongo-express.json</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mongo-express.json.stringify" id="apidoc.element.mongo-express.json.stringify">
+        function <span class="apidocSignatureSpan">mongo-express.json.</span>stringify
+        <span class="apidocSignatureSpan">(value, replacer, space)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">stringify = function (value, replacer, space) {
+
+  // The stringify method takes a value and an optional replacer, and an optional
+  // space parameter, and returns a JSON text. The replacer can be a function
+  // that can replace values, or an array of strings that will select the keys.
+  // A default replacer method can be provided. Use of the space parameter can
+  // produce text that is more easily readable.
+
+  var i;
+  gap = '';
+  indent = '';
+
+  // If the space parameter is a number, make an indent string containing that
+  // many spaces.
+
+  if (typeof space === 'number') {
+    for (i = 0; i &lt; space; i += 1) {
+      indent += ' ';
+    }
+
+  // If the space parameter is a string, it will be used as the indent string.
+
+  } else if (typeof space === 'string') {
+    indent = space;
+  }
+
+  // If there is a replacer, it must be a function or an array.
+  // Otherwise, throw an error.
+
+  rep = replacer;
+  if (replacer &amp;&amp; typeof replacer !== 'function' &amp;&amp;
+          (typeof replacer !== 'object' ||
+          typeof replacer.length !== 'number')) {
+    throw new Error('JSON.stringify');
+  }
+
+  // Make a fake root object containing our value under the key of ''.
+  // Return the result of stringifying the value.
+
+  return str('', { '': value });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    console.log();
+    console.error(clc.red('Address ' + addressString + ' already in use! You need to pick a different host and/or
+ port.'));
+    console.log('Maybe mongo-express is already running?');
+  }
+
+  console.log();
+  console.log('If you are still having trouble, try Googling for the key parts of the following error object before posting
+ an issue');
+  console.log(JSON.<span class="apidocCodeKeywordSpan">stringify</span>(e));
+  return process.exit(1);
+});
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mongo-express.utils" id="apidoc.module.mongo-express.utils">module mongo-express.utils</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mongo-express.utils.buildCollectionURL" id="apidoc.element.mongo-express.utils.buildCollectionURL">
+        function <span class="apidocSignatureSpan">mongo-express.utils.</span>buildCollectionURL
+        <span class="apidocSignatureSpan">(base, dbName, collectionName)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">buildCollectionURL = function (base, dbName, collectionName) {
+  return base + 'db/' + dbName + '/' + encodeURIComponent(collectionName);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongo-express.utils.bytesToSize" id="apidoc.element.mongo-express.utils.bytesToSize">
+        function <span class="apidocSignatureSpan">mongo-express.utils.</span>bytesToSize
+        <span class="apidocSignatureSpan">(bytes)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function bytesToSize(bytes) {
+  if (bytes === 0) return '0 Byte';
+  var k = 1000;
+  var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  var i = Math.floor(Math.log(bytes) / Math.log(k));
+  return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongo-express.utils.colsToGrid" id="apidoc.element.mongo-express.utils.colsToGrid">
+        function <span class="apidocSignatureSpan">mongo-express.utils.</span>colsToGrid
+        <span class="apidocSignatureSpan">(cols)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">colsToGrid = function (cols) {
+  // Generate list of GridFS buckets
+  // takes databases, filters by having suffix of '.files' and also a corresponding '.chunks' in the DB list, then returns just
+the prefix name.
+
+  // cols comes in an object of all databases and all their collections
+  // return an object of all databases and all potential GridFS x.files &amp; x.chunks
+
+  var rets = _.clone(cols);
+
+  _.each(rets, (val, key) =&gt; {
+    rets[key] = _.map(
+      _.filter(rets[key], col =&gt;
+        col.toString().substr(-6) === '.files' &amp;&amp; _.intersection(rets[key], [col.toString().slice(0, -6) + '.chunks'])
+      ),
+      col =&gt; col.toString().slice(0, -6)
+    ).sort();
+  });
+
+  return rets;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  };
+
+  // View helper, sets local variables used in templates
+  appRouter.all('*', function (req, res, next) {
+res.locals.baseHref       = buildBaseHref(req.originalUrl, req.url);
+res.locals.databases      = mongo.databases;
+res.locals.collections    = mongo.collections;
+res.locals.gridFSBuckets  = utils.<span class="apidocCodeKeywordSpan">colsToGrid</span>(mongo.collections);
+
+// Flash messages
+if (req.session.success) {
+  res.locals.messageSuccess = req.session.success;
+  delete req.session.success;
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongo-express.utils.deepmerge" id="apidoc.element.mongo-express.utils.deepmerge">
+        function <span class="apidocSignatureSpan">mongo-express.utils.</span>deepmerge
+        <span class="apidocSignatureSpan">(target, src)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">deepmerge = function (target, src) {
+  var array = Array.isArray(src);
+  var dst = array ? [] : {};
+
+  if (array) {
+    target = target || [];
+    dst = dst.concat(target);
+    src.forEach(function (e, i) {
+      if (typeof dst[i] === 'undefined') {
+        dst[i] = e;
+      } else if (typeof e === 'object') {
+        dst[i] = exports.deepmerge(target[i], e);
+      } else {
+        if (target.indexOf(e) === -1) {
+          dst.push(e);
+        }
+      }
+    });
+  } else {
+    if (target &amp;&amp; typeof target === 'object') {
+      Object.keys(target).forEach(function (key) {
+        dst[key] = target[key];
+      });
+    }
+
+    Object.keys(src).forEach(function (key) {
+      if (typeof src[key] !== 'object' || !src[key]) {
+        dst[key] = src[key];
+      } else {
+        if (!target[key]) {
+          dst[key] = src[key];
+        } else {
+          dst[key] = exports.deepmerge(target[key], src[key]);
+        }
+      }
+    });
+  }
+
+  return dst;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+let sslOptions;
+
+// Notify of any updates
+notifier.notify();
+
+try {
+// eslint-disable-next-line import/no-unresolved
+config = utils.<span class="apidocCodeKeywordSpan">deepmerge</span>(require('./config.default'), require('./config
+'));
+} catch (e) {
+if (e.code === 'MODULE_NOT_FOUND') {
+  console.log('No custom config.js found, loading config.default.js');
+} else {
+  console.error(clc.red('Unable to load config.js!'));
+  console.error(clc.red('Error is:'));
+  console.log(clc.red(e));
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongo-express.utils.roughSizeOfObject" id="apidoc.element.mongo-express.utils.roughSizeOfObject">
+        function <span class="apidocSignatureSpan">mongo-express.utils.</span>roughSizeOfObject
+        <span class="apidocSignatureSpan">(object)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">roughSizeOfObject = function (object) {
+
+  var objectList = [];
+  var recurse = function (value) {
+    var bytes = 0;
+
+    if (typeof value === 'boolean') {
+      bytes = 4;
+    } else if (typeof value === 'string') {
+      bytes = value.length * 2;
+    } else if (typeof value === 'number') {
+      bytes = 8;
+    } else if (typeof value === 'object' &amp;&amp; objectList.indexOf(value) === -1) {
+      objectList[objectList.length] = value;
+
+      for (var i in value) {
+        bytes += 8; // an assumed existence overhead
+        bytes += recurse(value[i]);
+      }
+    }
+
+    return bytes;
+  };
+
+  return recurse(object);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
