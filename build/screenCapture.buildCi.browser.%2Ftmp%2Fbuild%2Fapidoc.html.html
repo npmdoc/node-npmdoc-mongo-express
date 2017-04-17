@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/mongo-express/mongo-express#readme"
-
-    >mongo-express (v0.39.2)</a>
+    <a href="https://github.com/mongo-express/mongo-express#readme">mongo-express (v0.39.2)</a>
 </h1>
 <h4>Web-based admin interface for MongoDB</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.mongo-express">module mongo-express</a><ol>
 
@@ -376,7 +369,7 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">csv = function (data) {
-  for (var i = 0, ii = data.length; i &#x3c; ii; i++) {
+  for (var i = 0, ii = data.length; i &lt; ii; i++) {
     var current = data[i];
     handleObject(current);
     data[i] = flat(current, { safe: true });
@@ -397,11 +390,11 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">db = function (config) {
   // set up database stuff
-  let host = config.mongodb.server  || &#x27;localhost&#x27;;
+  let host = config.mongodb.server  || 'localhost';
   let port = config.mongodb.port    || mongodb.Connection.DEFAULT_PORT;
 
   if (config.mongodb.useSSL) {
-    console.error(&#x27;Please update config file to use mongodb.ssl instead of mongodb.useSSL. Copying value for now.&#x27;);
+    console.error('Please update config file to use mongodb.ssl instead of mongodb.useSSL. Copying value for now.');
     config.mongodb.ssl = config.mongodb.useSSL;
   }
 
@@ -420,9 +413,9 @@
       return new mongodb.Server(host, port, dbOptions);
     });
 
-    db = new mongodb.Db(&#x27;local&#x27;, new mongodb.ReplSet(host), { safe: true, w: 0 });
+    db = new mongodb.Db('local', new mongodb.ReplSet(host), { safe: true, w: 0 });
   } else {
-    db = new mongodb.Db(&#x27;local&#x27;, new mongodb.Server(host, port, dbOptions), { safe: true });
+    db = new mongodb.Db('local', new mongodb.Server(host, port, dbOptions), { safe: true });
   }
 
   let collections     = {};
@@ -457,9 +450,9 @@
       if (err) {
         //TODO: handle error
         console.error(err);
-        databases = _.map(config.mongodb.auth, &#x27;database&#x27;);
+        databases = _.map(config.mongodb.auth, 'database');
       } else {
-        for (let i = 0; i &#x3c; dbs.databases.length; i++) {
+        for (let i = 0; i &lt; dbs.databases.length; i++) {
           let dbName = dbs.databases[i].name;
 
           if (config.mongodb.whitelist.length !== 0) {
@@ -495,7 +488,7 @@
       throw err;
     }
 
-    if (config.options.console) console.log(&#x27;Database connected&#x27;);
+    if (config.options.console) console.log('Database connected');
 
     mainConn = db;
 
@@ -503,7 +496,7 @@
     if (config.mongodb.admin === true) {
 
       if (config.mongodb.adminUsername.length === 0) {
-        if (config.options.console) console.log(&#x27;Admin Database connected&#x27;);
+        if (config.options.console) console.log('Admin Database connected');
         updateDatabases(adminDb);
       } else {
         //auth details were supplied, authenticate admin account with them
@@ -513,22 +506,22 @@
             console.error(err);
           }
 
-          if (config.options.console) console.log(&#x27;Admin Database connected&#x27;);
+          if (config.options.console) console.log('Admin Database connected');
           updateDatabases(adminDb);
         });
       }
     } else {
       //Regular user authentication
-      if (typeof config.mongodb.auth === &#x27;undefined&#x27; || config.mongodb.auth.length === 0) {
-        throw new Error(&#x27;Add auth details to config or turn on admin!&#x27;);
+      if (typeof config.mongodb.auth === 'undefined' || config.mongodb.auth.length === 0) {
+        throw new Error('Add auth details to config or turn on admin!');
       }
 
       async.forEachSeries(config.mongodb.auth, function (auth, callback) {
-        if (config.options.console) console.log(&#x27;Connecting to &#x27; + auth.database + &#x27;...&#x27;);
+        if (config.options.console) console.log('Connecting to ' + auth.database + '...');
         connections[auth.database] = mainConn.db(auth.database);
         databases.push(auth.database);
 
-        if (typeof auth.username !== &#x27;undefined&#x27; &#x26;&#x26; auth.username.length !== 0) {
+        if (typeof auth.username !== 'undefined' &amp;&amp; auth.username.length !== 0) {
           connections[auth.database].authenticate(auth.username, auth.password, function (err, success) {
             if (err) { ...</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -566,23 +559,23 @@ databases = databases.sort();
 
   //Set up swig
   const swigOptions = {
-    cache: process.env.NODE_ENV === &#x27;production&#x27; ? &#x27;memory&#x27; : false,
+    cache: process.env.NODE_ENV === 'production' ? 'memory' : false,
   };
   const swigEngine = new swig.Swig(swigOptions);
-  app.engine(&#x27;html&#x27;, swigEngine.renderFile);
+  app.engine('html', swigEngine.renderFile);
   Object.keys(swigFilters).forEach(function (name) {
     swig.setFilter(name, swigFilters[name]);
   });
 
   //App configuration
-  app.set(&#x27;views&#x27;, __dirname + &#x27;/views&#x27;);
-  app.set(&#x27;view engine&#x27;, &#x27;html&#x27;);
-  app.set(&#x27;view options&#x27;, { layout: false });
+  app.set('views', __dirname + '/views');
+  app.set('view engine', 'html');
+  app.set('view options', { layout: false });
 
-  app.use(&#x27;/&#x27;, router(config));
+  app.use('/', router(config));
 
-  app.set(&#x27;read_only&#x27;,      config.options.readOnly      || false);
-  app.set(&#x27;gridFSEnabled&#x27;,  config.options.gridFSEnabled || false);
+  app.set('read_only',      config.options.readOnly      || false);
+  app.set('gridFSEnabled',  config.options.gridFSEnabled || false);
 
   return app;
 }</pre></li>
@@ -607,11 +600,11 @@ databases = databases.sort();
     appRouter.use(basicAuth(config.basicAuth.username, config.basicAuth.password));
   }
 
-  appRouter.use(favicon(__dirname + &#x27;/../public/images/favicon.ico&#x27;));
+  appRouter.use(favicon(__dirname + '/../public/images/favicon.ico'));
 
-  appRouter.use(logger(&#x27;dev&#x27;, config.options.logger));
+  appRouter.use(logger('dev', config.options.logger));
 
-  appRouter.use(&#x27;/public&#x27;, express.static(__dirname + &#x27;/../build/&#x27;));
+  appRouter.use('/public', express.static(__dirname + '/../build/'));
 
   // Set request size limit
   appRouter.use(bodyParser.urlencoded({
@@ -629,7 +622,7 @@ databases = databases.sort();
   }));
 
   appRouter.use(methodOverride(function (req) {
-    if (req.body &#x26;&#x26; typeof req.body === &#x27;object&#x27; &#x26;&#x26; &#x27;_method&#x27; in req.body) {
+    if (req.body &amp;&amp; typeof req.body === 'object' &amp;&amp; '_method' in req.body) {
       // look in urlencoded POST bodies and delete it
       const method = req.body._method;
       delete req.body._method;
@@ -637,15 +630,15 @@ databases = databases.sort();
     }
   }));
 
-  if (process.env.NODE_ENV === &#x27;development&#x27;) {
+  if (process.env.NODE_ENV === 'development') {
     appRouter.use(errorHandler());
   }
 
   const addTrailingSlash = function (s) {
-    return s + (s[s.length - 1] === &#x27;/&#x27; ? &#x27;&#x27; : &#x27;/&#x27;);
+    return s + (s[s.length - 1] === '/' ? '' : '/');
   };
   const buildBaseHref = function (originalUrl, reqUrl) {
-    if (reqUrl === &#x27;/&#x27;) {
+    if (reqUrl === '/') {
       return addTrailingSlash(originalUrl);
     }
     const idx = originalUrl.lastIndexOf(reqUrl);
@@ -654,7 +647,7 @@ databases = databases.sort();
   };
 
   // View helper, sets local variables used in templates
-  appRouter.all(&#x27;*&#x27;, function (req, res, next) {
+  appRouter.all('*', function (req, res, next) {
     res.locals.baseHref       = buildBaseHref(req.originalUrl, req.url);
     res.locals.databases      = mongo.databases;
     res.locals.collections    = mongo.collections;
@@ -681,10 +674,10 @@ databases = databases.sort();
   });
 
   // route param pre-conditions
-  appRouter.param(&#x27;database&#x27;, function (req, res, next, id) {
+  appRouter.param('database', function (req, res, next, id) {
     //Make sure database exists
     if (!_.includes(mongo.databases, id)) {
-      req.session.error = &#x27;Database not found!&#x27;;
+      req.session.error = 'Database not found!';
       return res.redirect(res.locals.baseHref);
     }
 
@@ -702,12 +695,12 @@ databases = databases.sort();
   });
 
   // :collection param MUST be preceded by a :database param
-  appRouter.param(&#x27;collection&#x27;, function (req, res, next, id) {
+  appRouter.param('collection', function (req, res, next, id) {
     //Make sure collection exists
 
     if (!_.includes(mongo.collections[req.dbName], id)) {
-      req.session.error = &#x27;Collection not found!&#x27;;
-      return res.redirect(res.locals.baseHref + &#x27;db/&#x27; + req.dbName);
+      req.session.error = 'Collection not found!';
+      return res.redirect(res.locals.baseHref + 'db/' + req.dbName);
     }
 
     req.collectionName = id;
@@ -717,8 +710,8 @@ databases = databases.sort();
 
     mongo.connections[req.dbName].collection(id, function (err, coll) {
       if (err || coll === null) {
-        req.session.error = &#x27;Collection not found!&#x27;;
-        return res.redirect(res.locals.baseHref + &#x27;db/&#x27; + req.dbName);
+        req.session.error = 'Collection not found!';
+        return res.redirect(res.locals.baseHref + 'db/' + req.dbName);
       }
 
       req.collection = coll;
@@ -728,10 +721,10 @@ databases = databases.sort();
   });
 
   // :document param MUST be preceded by a :collection param
-  appRouter.param(&#x27;document&#x27;, function (req, res, next, id) {
-    if (id === &#x27;undefined&#x27; || id === undefined) {
-      req.session.error = &#x27;Document lacks an _id!&#x27;;
-      return res.redirect(res.locals.baseHref + &#x27;db/&#x27; + req.dbName + &#x27;/&#x27; + req.collectionName); ...</pre></li>
+  appRouter.param('document', function (req, res, next, id) {
+    if (id === 'undefined' || id === undefined) {
+      req.session.error = 'Document lacks an _id!';
+      return res.redirect(res.locals.baseHref + 'db/' + req.dbName + '/' + req.collectionName); ...</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -783,16 +776,16 @@ databases = databases.sort();
 };
 };
 
-//JSON.parse doesn&#x27;t support BSON data types
+//JSON.parse doesn't support BSON data types
 //Document is evaluated in a vm in order to support BSON data types
 //Sandbox contains BSON data type functions from node-mongodb-native
 exports.toBSON = function (string) {
 var sandbox = exports.<span class="apidocCodeKeywordSpan">getSandbox</span>();
 
-string = string.replace(/ISODate\(/g, &#x27;new ISODate(&#x27;);
-string = string.replace(/Binary\((&#x22;[^&#x22;]+&#x22;),/g, &#x27;Binary(new Buffer($1, &#x22;base64&#x22;),&#x27;);
+string = string.replace(/ISODate\(/g, 'new ISODate(');
+string = string.replace(/Binary\(("[^"]+"),/g, 'Binary(new Buffer($1, "base64"),');
 
-vm.runInNewContext(&#x27;doc = eval((&#x27; + string + &#x27;));&#x27;, sandbox);
+vm.runInNewContext('doc = eval((' + string + '));', sandbox);
 
 return sandbox.doc;
 ...</pre></li>
@@ -829,10 +822,10 @@ return sandbox.doc;
     <li>description and source-code<pre class="apidocCodePre">toBSON = function (string) {
   var sandbox = exports.getSandbox();
 
-  string = string.replace(/ISODate\(/g, &#x27;new ISODate(&#x27;);
-  string = string.replace(/Binary\((&#x22;[^&#x22;]+&#x22;),/g, &#x27;Binary(new Buffer($1, &#x22;base64&#x22;),&#x27;);
+  string = string.replace(/ISODate\(/g, 'new ISODate(');
+  string = string.replace(/Binary\(("[^"]+"),/g, 'Binary(new Buffer($1, "base64"),');
 
-  vm.runInNewContext(&#x27;doc = eval((&#x27; + string + &#x27;));&#x27;, sandbox);
+  vm.runInNewContext('doc = eval((' + string + '));', sandbox);
 
   return sandbox.doc;
 }</pre></li>
@@ -866,9 +859,9 @@ exports.toSafeBSON = function (string) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">toJsonString = function (doc) {
   let sJson = json.stringify(doc, null);
-  sJson = sJson.replace(/ObjectID\(([^)]+)\)/g, &#x27;{ &#x22;$oid&#x22;: $1 }&#x27;);
-  sJson = sJson.replace(/DBRef\(([^)]+)\)/g, &#x27;{ &#x22;$ref&#x22;: $1 }&#x27;);
-  sJson = sJson.replace(/ISODate\(([^)]+)\)/g, &#x27;$1&#x27;);
+  sJson = sJson.replace(/ObjectID\(([^)]+)\)/g, '{ "$oid": $1 }');
+  sJson = sJson.replace(/DBRef\(([^)]+)\)/g, '{ "$ref": $1 }');
+  sJson = sJson.replace(/ISODate\(([^)]+)\)/g, '$1');
   return sJson;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -889,20 +882,20 @@ exports.toSafeBSON = function (string) {
   // Validation
   if (
     !string ||                                            // No input at all
-    string === &#x27;&#x27; ||                                      // empty string
-    string.toUpperCase().indexOf(&#x27;OBJECTID(&#x27;) === -1 ||   // missing the opening &#x27;ObjectID(&#x27;
-    string.indexOf(&#x27;)&#x27;) === -1                            // missing the closing &#x27;(&#x27;
+    string === '' ||                                      // empty string
+    string.toUpperCase().indexOf('OBJECTID(') === -1 ||   // missing the opening 'ObjectID('
+    string.indexOf(')') === -1                            // missing the closing '('
   ) {
     return false;
   }
 
   // Strip quotes
-  string = string.replace(&#x27;&#x22;&#x27;, &#x27;&#x27;).replace(&#x27;&#x22;&#x27;, &#x27;&#x27;);
+  string = string.replace('"', '').replace('"', '');
 
-  // Convert ObjectId(&#x22;526ddf5a9f610ffd26000001&#x22;) to 526ddf5a9f610ffd26000001
-  string = string.replace(/ObjectID\(/i, &#x27;&#x27;).replace(&#x27;)&#x27;, &#x27;&#x27;);
+  // Convert ObjectId("526ddf5a9f610ffd26000001") to 526ddf5a9f610ffd26000001
+  string = string.replace(/ObjectID\(/i, '').replace(')', '');
 
-  // Make sure it&#x27;s a 24-character string to prevent errors.
+  // Make sure it's a 24-character string to prevent errors.
   if (string.length === 24) {
     return sandbox.ObjectID(string);
   } else {
@@ -914,7 +907,7 @@ exports.toSafeBSON = function (string) {
 var DBRef = function (namespace, oid, db) {
   //Allow empty/undefined db value
   if (db === undefined || db === null) {
-    db = &#x27;&#x27;;
+    db = '';
   }
 
   var objectId = exports.<span class="apidocCodeKeywordSpan">toObjectId</span>(oid);
@@ -959,24 +952,24 @@ var Timestamp = function (high, low) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">toString = function (doc) {
   //Use custom json stringify function from json.js
-  return json.stringify(doc, null, &#x27;    &#x27;);
+  return json.stringify(doc, null, '    ');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 exports.json = function (input) {
-return JSON.stringify(input, null, &#x27;    &#x27;);
+return JSON.stringify(input, null, '    ');
 };
 
 exports.convertBytes = function (input) {
 input = parseInt(input, 10);
-if (input &#x3c; 1024) {
-  return input.<span class="apidocCodeKeywordSpan">toString</span>() + &#x27; Bytes&#x27;;
-} else if (input &#x3c; 1024 * 1024) {
+if (input &lt; 1024) {
+  return input.<span class="apidocCodeKeywordSpan">toString</span>() + ' Bytes';
+} else if (input &lt; 1024 * 1024) {
   //Convert to KB and keep 2 decimal values
   input = Math.round((input / 1024) * 100) / 100;
-  return input.toString() + &#x27; KB&#x27;;
-} else if (input &#x3c; 1024 * 1024 * 1024) {
+  return input.toString() + ' KB';
+} else if (input &lt; 1024 * 1024 * 1024) {
   input = Math.round((input / (1024 * 1024)) * 100) / 100;
-  return input.toString() + &#x27; MB&#x27;;
+  return input.toString() + ' MB';
 ...</pre></li>
     </ul>
 
@@ -995,7 +988,7 @@ if (input &#x3c; 1024) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">csv = function (data) {
-  for (var i = 0, ii = data.length; i &#x3c; ii; i++) {
+  for (var i = 0, ii = data.length; i &lt; ii; i++) {
     var current = data[i];
     handleObject(current);
     data[i] = flat(current, { safe: true });
@@ -1021,11 +1014,11 @@ if (input &#x3c; 1024) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">db = function (config) {
   // set up database stuff
-  let host = config.mongodb.server  || &#x27;localhost&#x27;;
+  let host = config.mongodb.server  || 'localhost';
   let port = config.mongodb.port    || mongodb.Connection.DEFAULT_PORT;
 
   if (config.mongodb.useSSL) {
-    console.error(&#x27;Please update config file to use mongodb.ssl instead of mongodb.useSSL. Copying value for now.&#x27;);
+    console.error('Please update config file to use mongodb.ssl instead of mongodb.useSSL. Copying value for now.');
     config.mongodb.ssl = config.mongodb.useSSL;
   }
 
@@ -1044,9 +1037,9 @@ if (input &#x3c; 1024) {
       return new mongodb.Server(host, port, dbOptions);
     });
 
-    db = new mongodb.Db(&#x27;local&#x27;, new mongodb.ReplSet(host), { safe: true, w: 0 });
+    db = new mongodb.Db('local', new mongodb.ReplSet(host), { safe: true, w: 0 });
   } else {
-    db = new mongodb.Db(&#x27;local&#x27;, new mongodb.Server(host, port, dbOptions), { safe: true });
+    db = new mongodb.Db('local', new mongodb.Server(host, port, dbOptions), { safe: true });
   }
 
   let collections     = {};
@@ -1081,9 +1074,9 @@ if (input &#x3c; 1024) {
       if (err) {
         //TODO: handle error
         console.error(err);
-        databases = _.map(config.mongodb.auth, &#x27;database&#x27;);
+        databases = _.map(config.mongodb.auth, 'database');
       } else {
-        for (let i = 0; i &#x3c; dbs.databases.length; i++) {
+        for (let i = 0; i &lt; dbs.databases.length; i++) {
           let dbName = dbs.databases[i].name;
 
           if (config.mongodb.whitelist.length !== 0) {
@@ -1119,7 +1112,7 @@ if (input &#x3c; 1024) {
       throw err;
     }
 
-    if (config.options.console) console.log(&#x27;Database connected&#x27;);
+    if (config.options.console) console.log('Database connected');
 
     mainConn = db;
 
@@ -1127,7 +1120,7 @@ if (input &#x3c; 1024) {
     if (config.mongodb.admin === true) {
 
       if (config.mongodb.adminUsername.length === 0) {
-        if (config.options.console) console.log(&#x27;Admin Database connected&#x27;);
+        if (config.options.console) console.log('Admin Database connected');
         updateDatabases(adminDb);
       } else {
         //auth details were supplied, authenticate admin account with them
@@ -1137,22 +1130,22 @@ if (input &#x3c; 1024) {
             console.error(err);
           }
 
-          if (config.options.console) console.log(&#x27;Admin Database connected&#x27;);
+          if (config.options.console) console.log('Admin Database connected');
           updateDatabases(adminDb);
         });
       }
     } else {
       //Regular user authentication
-      if (typeof config.mongodb.auth === &#x27;undefined&#x27; || config.mongodb.auth.length === 0) {
-        throw new Error(&#x27;Add auth details to config or turn on admin!&#x27;);
+      if (typeof config.mongodb.auth === 'undefined' || config.mongodb.auth.length === 0) {
+        throw new Error('Add auth details to config or turn on admin!');
       }
 
       async.forEachSeries(config.mongodb.auth, function (auth, callback) {
-        if (config.options.console) console.log(&#x27;Connecting to &#x27; + auth.database + &#x27;...&#x27;);
+        if (config.options.console) console.log('Connecting to ' + auth.database + '...');
         connections[auth.database] = mainConn.db(auth.database);
         databases.push(auth.database);
 
-        if (typeof auth.username !== &#x27;undefined&#x27; &#x26;&#x26; auth.username.length !== 0) {
+        if (typeof auth.username !== 'undefined' &amp;&amp; auth.username.length !== 0) {
           connections[auth.database].authenticate(auth.username, auth.password, function (err, success) {
             if (err) { ...</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -1190,23 +1183,23 @@ databases = databases.sort();
     <ul>
     <li>description and source-code<pre class="apidocCodePre">convertBytes = function (input) {
   input = parseInt(input, 10);
-  if (input &#x3c; 1024) {
-    return input.toString() + &#x27; Bytes&#x27;;
-  } else if (input &#x3c; 1024 * 1024) {
+  if (input &lt; 1024) {
+    return input.toString() + ' Bytes';
+  } else if (input &lt; 1024 * 1024) {
     //Convert to KB and keep 2 decimal values
     input = Math.round((input / 1024) * 100) / 100;
-    return input.toString() + &#x27; KB&#x27;;
-  } else if (input &#x3c; 1024 * 1024 * 1024) {
+    return input.toString() + ' KB';
+  } else if (input &lt; 1024 * 1024 * 1024) {
     input = Math.round((input / (1024 * 1024)) * 100) / 100;
-    return input.toString() + &#x27; MB&#x27;;
-  } else if (input &#x3c; 1024 * 1024 * 1024 * 1024) {
+    return input.toString() + ' MB';
+  } else if (input &lt; 1024 * 1024 * 1024 * 1024) {
     input = Math.round((input / (1024 * 1024 * 1024)) * 100) / 100;
-    return input.toString() + &#x27; GB&#x27;;
-  } else if (input &#x3c; 1024 * 1024 * 1024 * 1024 * 1024) {
+    return input.toString() + ' GB';
+  } else if (input &lt; 1024 * 1024 * 1024 * 1024 * 1024) {
     input = Math.round((input / (1024 * 1024 * 1024 * 1024)) * 100) / 100;
-    return input.toString() + &#x27; TB&#x27;;
+    return input.toString() + ' TB';
   } else {
-    return input.toString() + &#x27; Bytes&#x27;;
+    return input.toString() + ' Bytes';
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1237,7 +1230,7 @@ databases = databases.sort();
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">json = function (input) {
-  return JSON.stringify(input, null, &#x27;    &#x27;);
+  return JSON.stringify(input, null, '    ');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1253,8 +1246,8 @@ databases = databases.sort();
     <ul>
     <li>description and source-code<pre class="apidocCodePre">stringDocIDs = function (input) {
 
-  // Turns {_bsontype: &#x27; ObjectID&#x27;, id:12345... } into a plain string
-  if (input &#x26;&#x26; typeof input === &#x27;object&#x27; &#x26;&#x26; input._bsontype === &#x27;ObjectID&#x27;) {
+  // Turns {_bsontype: ' ObjectID', id:12345... } into a plain string
+  if (input &amp;&amp; typeof input === 'object' &amp;&amp; input._bsontype === 'ObjectID') {
     return input.toString();
   }
 
@@ -1275,110 +1268,110 @@ databases = databases.sort();
     <li>description and source-code<pre class="apidocCodePre">to_display = function (input) {
 
   var entifyGTLTAmp = function (text) {
-    // Turn &#x3c; ? &#x3e; into HTML entities, so data doesn&#x27;t get interpreted by the browser
-    return text.replace(/&#x26;/g, &#x27;&#x26;amp;&#x27;)
-      .replace(/&#x3c;/g, &#x27;&#x26;lt;&#x27;)
-      .replace(/&#x3e;/g, &#x27;&#x26;gt;&#x27;)
-      .replace(/&#x22;/g, &#x27;&#x26;quot;&#x27;)
-      .replace(/&#x27;/g, &#x27;&#x26;apos;&#x27;);
+    // Turn &lt; ? &gt; into HTML entities, so data doesn't get interpreted by the browser
+    return text.replace(/&amp;/g, '&amp;amp;')
+      .replace(/&lt;/g, '&amp;lt;')
+      .replace(/&gt;/g, '&amp;gt;')
+      .replace(/"/g, '&amp;quot;')
+      .replace(/'/g, '&amp;apos;');
   };
 
-  var retHTML = &#x27;&#x27;;
+  var retHTML = '';
 
   // Get nulls out of the way
   if (input === null || input === undefined) {
-    return &#x27;&#x27;;
+    return '';
   }
 
   // Large property
   if (
-    typeof input === &#x27;object&#x27; &#x26;&#x26;
-    input.display &#x26;&#x26;
-    input.display === &#x27;*** LARGE PROPERTY ***&#x27; &#x26;&#x26;
-    input.preview &#x26;&#x26;
-    input.roughSz &#x26;&#x26;
-    input.humanSz &#x26;&#x26;
-    input.attribu &#x26;&#x26;
-    input.maxSize &#x26;&#x26;
+    typeof input === 'object' &amp;&amp;
+    input.display &amp;&amp;
+    input.display === '*** LARGE PROPERTY ***' &amp;&amp;
+    input.preview &amp;&amp;
+    input.roughSz &amp;&amp;
+    input.humanSz &amp;&amp;
+    input.attribu &amp;&amp;
+    input.maxSize &amp;&amp;
     input._id
   ) {
-    retHTML += &#x27;&#x3c;div class=&#x22;tooDamnBig&#x22; doc_id=&#x22;&#x27; + encodeURIComponent(JSON.stringify(input._id)) + &#x27;&#x22; &#x27; +
-      &#x27;doc_prop=&#x22;&#x27; + input.attribu + &#x27;&#x22; title=&#x22;Max prop size: &#x27; + input.maxSize + &#x27;&#x22;&#x3e;&#x27;;
-    retHTML += input.display + &#x27;&#x3c;br&#x3e;~&#x27; + input.humanSz;
-    retHTML += &#x27;&#x3c;br&#x3e;Preview:&#x27; + input.preview;
-    retHTML += &#x27;&#x3c;br&#x3e;Click to fetch this property&#x27;;
-    retHTML += &#x27;&#x3c;/div&#x3e;&#x27;;
+    retHTML += '&lt;div class="tooDamnBig" doc_id="' + encodeURIComponent(JSON.stringify(input._id)) + '" ' +
+      'doc_prop="' + input.attribu + '" title="Max prop size: ' + input.maxSize + '"&gt;';
+    retHTML += input.display + '&lt;br&gt;~' + input.humanSz;
+    retHTML += '&lt;br&gt;Preview:' + input.preview;
+    retHTML += '&lt;br&gt;Click to fetch this property';
+    retHTML += '&lt;/div&gt;';
     return retHTML;
   }
 
   // Large row
   if (
-    typeof input === &#x27;object&#x27; &#x26;&#x26;
-    input.display &#x26;&#x26;
-    input.display === &#x27;*** LARGE ROW ***&#x27; &#x26;&#x26;
-    input.preview &#x26;&#x26;
-    input.roughSz &#x26;&#x26;
-    input.humanSz &#x26;&#x26;
-    input.attribu &#x26;&#x26;
-    input.maxSize &#x26;&#x26;
+    typeof input === 'object' &amp;&amp;
+    input.display &amp;&amp;
+    input.display === '*** LARGE ROW ***' &amp;&amp;
+    input.preview &amp;&amp;
+    input.roughSz &amp;&amp;
+    input.humanSz &amp;&amp;
+    input.attribu &amp;&amp;
+    input.maxSize &amp;&amp;
     input._id
   ) {
-    retHTML += &#x27;&#x3c;div class=&#x22;tooDamnBig&#x22; doc_id=&#x22;&#x27; + encodeURIComponent(JSON.stringify(input._id)) + &#x27;&#x22; &#x27; +
-      &#x27;doc_prop=&#x22;&#x27; + input.attribu + &#x27;&#x22; title=&#x22;Max row size: &#x27; + input.maxSize + &#x27;&#x22;&#x3e;&#x27;;
-    retHTML += input.display + &#x27;&#x3c;br&#x3e;&#x27; + input.attribu + &#x27;: ~&#x27; + input.humanSz;
-    retHTML += &#x27;&#x3c;br&#x3e;Preview:&#x27; + input.preview;
-    retHTML += &#x27;&#x3c;br&#x3e;Click to fetch this property&#x27;;
-    retHTML += &#x27;&#x3c;/div&#x3e;&#x27;;
+    retHTML += '&lt;div class="tooDamnBig" doc_id="' + encodeURIComponent(JSON.stringify(input._id)) + '" ' +
+      'doc_prop="' + input.attribu + '" title="Max row size: ' + input.maxSize + '"&gt;';
+    retHTML += input.display + '&lt;br&gt;' + input.attribu + ': ~' + input.humanSz;
+    retHTML += '&lt;br&gt;Preview:' + input.preview;
+    retHTML += '&lt;br&gt;Click to fetch this property';
+    retHTML += '&lt;/div&gt;';
     return retHTML;
   }
 
   // Images inline
   if (
-    typeof input === &#x27;string&#x27; &#x26;&#x26;
+    typeof input === 'string' &amp;&amp;
     (
-      input.substr(0, 22) === &#x27;data:image/png;base64,&#x27; ||
-      input.substr(0, 22) === &#x27;data:image/gif;base64,&#x27; ||
-      input.substr(0, 22) === &#x27;data:image/jpg;base64,&#x27; ||
-      input.substr(0, 23) === &#x27;data:image/jpeg;base64,&#x27;
+      input.substr(0, 22) === 'data:image/png;base64,' ||
+      input.substr(0, 22) === 'data:image/gif;base64,' ||
+      input.substr(0, 22) === 'data:image/jpg;base64,' ||
+      input.substr(0, 23) === 'data:image/jpeg;base64,'
     )
   )  {
-    return &#x27;&#x3c;img src=&#x22;&#x27; + input + &#x27;&#x22; style=&#x22;max-height:100%; max-width:100%; &#x22;/&#x3e;&#x27;;
+    return '&lt;img src="' + input + '" style="max-height:100%; max-width:100%; "/&gt;';
   }
 
   // Audio inline
   if (
-    typeof input === &#x27;string&#x27; &#x26;&#x26;
+    typeof input === 'string' &amp;&amp;
     (
-      input.substr(0, 22) === &#x27;data:audio/ogg;base64,&#x27; ||
-      input.substr(0, 22) === &#x27;data:audio/mp3;base64,&#x27;
+      input.substr(0, 22) === 'data:audio/ogg;base64,' ||
+      input.substr(0, 22) === 'data:audio/mp3;base64,'
     )
   )  {
-    return &#x27;&#x3c;audio controls style=&#x22;width:45px;&#x22; src=&#x22;&#x27; + input + &#x27;&#x22;&#x3e;Your browser does not support the audio element.&#x3c;/audio&#x3e;&#x27;;
+    return '&lt;audio controls style="width:45px;" src="' + input + '"&gt;Your browser does not support the audio element.&lt;/audio&gt;';
   }
 
   // Video inline
   if (
-    typeof input === &#x27;string&#x27; &#x26;&#x26;
+    typeof input === 'string' &amp;&amp;
     (
-      input.substr(0, 23) === &#x27;data:video/webm;base64,&#x27; ||
-      input.substr(0, 22) === &#x27;data:video/mp4;base64,&#x27;  ||
-      input.substr(0, 22) === &#x27;data:video/ogv;base64,&#x27;
+      input.substr(0, 23) === 'data:video/webm;base64,' ||
+      input.substr(0, 22) === 'data:video/mp4;base64,'  ||
+      input.substr(0, 22) === 'data:video/ogv;base64,'
     )
   )  {
-    return &#x27;&#x3c;video controls&#x3e;&#x3c;source type=&#x22;&#x27; + input.substring(input.indexOf(&#x27;:&#x27;) + 1, input.indexOf(&#x27;;&#x27;)) + &#x27;&#x22; src=&#x22;&#x27; + input + &#x27;&#x22;/&#x3e;&#x27; +
-      &#x27;Your browser does not support the video element.&#x3c;/video&#x3e;&#x27;;
+    return '&lt;video controls&gt;&lt;source type="' + input.substring(input.indexOf(':') + 1, input.indexOf(';')) + '" src="' + input + '"/&gt;' +
+      'Your browser does not support the video element.&lt;/video&gt;';
   }
 
-  if (typeof input === &#x27;object&#x27; &#x26;&#x26; input.toString().substr(0, 15) === &#x27;[object Object]&#x27;) {
-    return &#x27;&#x3c;pre&#x3e;&#x27; + JSON.stringify(input, null, 2) + &#x27;&#x3c;/pre&#x3e;&#x27;;
+  if (typeof input === 'object' &amp;&amp; input.toString().substr(0, 15) === '[object Object]') {
+    return '&lt;pre&gt;' + JSON.stringify(input, null, 2) + '&lt;/pre&gt;';
   }
 
   // Concatenate long strings
-  if (typeof input === &#x27;string&#x27; &#x26;&#x26; input.length &#x3e; 50) {
-    return entifyGTLTAmp(input.substr(0, 49) + &#x27;…&#x27;);
+  if (typeof input === 'string' &amp;&amp; input.length &gt; 50) {
+    return entifyGTLTAmp(input.substr(0, 49) + 'â€¦');
   }
 
-  // Return basic .toString() since we&#x27;ve tried all other cases
+  // Return basic .toString() since we've tried all other cases
   return entifyGTLTAmp(input.toString());
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1394,7 +1387,7 @@ databases = databases.sort();
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">to_string = function (input) {
-  return (input !== null &#x26;&#x26; input !== undefined) ? input.toString() : &#x27;&#x27;;
+  return (input !== null &amp;&amp; input !== undefined) ? input.toString() : '';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1422,20 +1415,20 @@ databases = databases.sort();
   // produce text that is more easily readable.
 
   var i;
-  gap = &#x27;&#x27;;
-  indent = &#x27;&#x27;;
+  gap = '';
+  indent = '';
 
   // If the space parameter is a number, make an indent string containing that
   // many spaces.
 
-  if (typeof space === &#x27;number&#x27;) {
-    for (i = 0; i &#x3c; space; i += 1) {
-      indent += &#x27; &#x27;;
+  if (typeof space === 'number') {
+    for (i = 0; i &lt; space; i += 1) {
+      indent += ' ';
     }
 
   // If the space parameter is a string, it will be used as the indent string.
 
-  } else if (typeof space === &#x27;string&#x27;) {
+  } else if (typeof space === 'string') {
     indent = space;
   }
 
@@ -1443,27 +1436,27 @@ databases = databases.sort();
   // Otherwise, throw an error.
 
   rep = replacer;
-  if (replacer &#x26;&#x26; typeof replacer !== &#x27;function&#x27; &#x26;&#x26;
-          (typeof replacer !== &#x27;object&#x27; ||
-          typeof replacer.length !== &#x27;number&#x27;)) {
-    throw new Error(&#x27;JSON.stringify&#x27;);
+  if (replacer &amp;&amp; typeof replacer !== 'function' &amp;&amp;
+          (typeof replacer !== 'object' ||
+          typeof replacer.length !== 'number')) {
+    throw new Error('JSON.stringify');
   }
 
-  // Make a fake root object containing our value under the key of &#x27;&#x27;.
+  // Make a fake root object containing our value under the key of ''.
   // Return the result of stringifying the value.
 
-  return str(&#x27;&#x27;, { &#x27;&#x27;: value });
+  return str('', { '': value });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
     console.log();
-    console.error(clc.red(&#x27;Address &#x27; + addressString + &#x27; already in use! You need to pick a different host and/or
- port.&#x27;));
-    console.log(&#x27;Maybe mongo-express is already running?&#x27;);
+    console.error(clc.red('Address ' + addressString + ' already in use! You need to pick a different host and/or
+ port.'));
+    console.log('Maybe mongo-express is already running?');
   }
 
   console.log();
-  console.log(&#x27;If you are still having trouble, try Googling for the key parts of the following error object before posting
- an issue&#x27;);
+  console.log('If you are still having trouble, try Googling for the key parts of the following error object before posting
+ an issue');
   console.log(JSON.<span class="apidocCodeKeywordSpan">stringify</span>(e));
   return process.exit(1);
 });
@@ -1491,23 +1484,23 @@ databases = databases.sort();
 
   //Set up swig
   const swigOptions = {
-    cache: process.env.NODE_ENV === &#x27;production&#x27; ? &#x27;memory&#x27; : false,
+    cache: process.env.NODE_ENV === 'production' ? 'memory' : false,
   };
   const swigEngine = new swig.Swig(swigOptions);
-  app.engine(&#x27;html&#x27;, swigEngine.renderFile);
+  app.engine('html', swigEngine.renderFile);
   Object.keys(swigFilters).forEach(function (name) {
     swig.setFilter(name, swigFilters[name]);
   });
 
   //App configuration
-  app.set(&#x27;views&#x27;, __dirname + &#x27;/views&#x27;);
-  app.set(&#x27;view engine&#x27;, &#x27;html&#x27;);
-  app.set(&#x27;view options&#x27;, { layout: false });
+  app.set('views', __dirname + '/views');
+  app.set('view engine', 'html');
+  app.set('view options', { layout: false });
 
-  app.use(&#x27;/&#x27;, router(config));
+  app.use('/', router(config));
 
-  app.set(&#x27;read_only&#x27;,      config.options.readOnly      || false);
-  app.set(&#x27;gridFSEnabled&#x27;,  config.options.gridFSEnabled || false);
+  app.set('read_only',      config.options.readOnly      || false);
+  app.set('gridFSEnabled',  config.options.gridFSEnabled || false);
 
   return app;
 }</pre></li>
@@ -1537,11 +1530,11 @@ databases = databases.sort();
     appRouter.use(basicAuth(config.basicAuth.username, config.basicAuth.password));
   }
 
-  appRouter.use(favicon(__dirname + &#x27;/../public/images/favicon.ico&#x27;));
+  appRouter.use(favicon(__dirname + '/../public/images/favicon.ico'));
 
-  appRouter.use(logger(&#x27;dev&#x27;, config.options.logger));
+  appRouter.use(logger('dev', config.options.logger));
 
-  appRouter.use(&#x27;/public&#x27;, express.static(__dirname + &#x27;/../build/&#x27;));
+  appRouter.use('/public', express.static(__dirname + '/../build/'));
 
   // Set request size limit
   appRouter.use(bodyParser.urlencoded({
@@ -1559,7 +1552,7 @@ databases = databases.sort();
   }));
 
   appRouter.use(methodOverride(function (req) {
-    if (req.body &#x26;&#x26; typeof req.body === &#x27;object&#x27; &#x26;&#x26; &#x27;_method&#x27; in req.body) {
+    if (req.body &amp;&amp; typeof req.body === 'object' &amp;&amp; '_method' in req.body) {
       // look in urlencoded POST bodies and delete it
       const method = req.body._method;
       delete req.body._method;
@@ -1567,15 +1560,15 @@ databases = databases.sort();
     }
   }));
 
-  if (process.env.NODE_ENV === &#x27;development&#x27;) {
+  if (process.env.NODE_ENV === 'development') {
     appRouter.use(errorHandler());
   }
 
   const addTrailingSlash = function (s) {
-    return s + (s[s.length - 1] === &#x27;/&#x27; ? &#x27;&#x27; : &#x27;/&#x27;);
+    return s + (s[s.length - 1] === '/' ? '' : '/');
   };
   const buildBaseHref = function (originalUrl, reqUrl) {
-    if (reqUrl === &#x27;/&#x27;) {
+    if (reqUrl === '/') {
       return addTrailingSlash(originalUrl);
     }
     const idx = originalUrl.lastIndexOf(reqUrl);
@@ -1584,7 +1577,7 @@ databases = databases.sort();
   };
 
   // View helper, sets local variables used in templates
-  appRouter.all(&#x27;*&#x27;, function (req, res, next) {
+  appRouter.all('*', function (req, res, next) {
     res.locals.baseHref       = buildBaseHref(req.originalUrl, req.url);
     res.locals.databases      = mongo.databases;
     res.locals.collections    = mongo.collections;
@@ -1611,10 +1604,10 @@ databases = databases.sort();
   });
 
   // route param pre-conditions
-  appRouter.param(&#x27;database&#x27;, function (req, res, next, id) {
+  appRouter.param('database', function (req, res, next, id) {
     //Make sure database exists
     if (!_.includes(mongo.databases, id)) {
-      req.session.error = &#x27;Database not found!&#x27;;
+      req.session.error = 'Database not found!';
       return res.redirect(res.locals.baseHref);
     }
 
@@ -1632,12 +1625,12 @@ databases = databases.sort();
   });
 
   // :collection param MUST be preceded by a :database param
-  appRouter.param(&#x27;collection&#x27;, function (req, res, next, id) {
+  appRouter.param('collection', function (req, res, next, id) {
     //Make sure collection exists
 
     if (!_.includes(mongo.collections[req.dbName], id)) {
-      req.session.error = &#x27;Collection not found!&#x27;;
-      return res.redirect(res.locals.baseHref + &#x27;db/&#x27; + req.dbName);
+      req.session.error = 'Collection not found!';
+      return res.redirect(res.locals.baseHref + 'db/' + req.dbName);
     }
 
     req.collectionName = id;
@@ -1647,8 +1640,8 @@ databases = databases.sort();
 
     mongo.connections[req.dbName].collection(id, function (err, coll) {
       if (err || coll === null) {
-        req.session.error = &#x27;Collection not found!&#x27;;
-        return res.redirect(res.locals.baseHref + &#x27;db/&#x27; + req.dbName);
+        req.session.error = 'Collection not found!';
+        return res.redirect(res.locals.baseHref + 'db/' + req.dbName);
       }
 
       req.collection = coll;
@@ -1658,10 +1651,10 @@ databases = databases.sort();
   });
 
   // :document param MUST be preceded by a :collection param
-  appRouter.param(&#x27;document&#x27;, function (req, res, next, id) {
-    if (id === &#x27;undefined&#x27; || id === undefined) {
-      req.session.error = &#x27;Document lacks an _id!&#x27;;
-      return res.redirect(res.locals.baseHref + &#x27;db/&#x27; + req.dbName + &#x27;/&#x27; + req.collectionName); ...</pre></li>
+  appRouter.param('document', function (req, res, next, id) {
+    if (id === 'undefined' || id === undefined) {
+      req.session.error = 'Document lacks an _id!';
+      return res.redirect(res.locals.baseHref + 'db/' + req.dbName + '/' + req.collectionName); ...</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -1680,7 +1673,7 @@ databases = databases.sort();
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">buildCollectionURL = function (base, dbName, collectionName) {
-  return base + &#x27;db/&#x27; + dbName + &#x27;/&#x27; + encodeURIComponent(collectionName);
+  return base + 'db/' + dbName + '/' + encodeURIComponent(collectionName);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1695,11 +1688,11 @@ databases = databases.sort();
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function bytesToSize(bytes) {
-  if (bytes === 0) return &#x27;0 Byte&#x27;;
+  if (bytes === 0) return '0 Byte';
   var k = 1000;
-  var sizes = [&#x27;Bytes&#x27;, &#x27;KB&#x27;, &#x27;MB&#x27;, &#x27;GB&#x27;, &#x27;TB&#x27;, &#x27;PB&#x27;, &#x27;EB&#x27;, &#x27;ZB&#x27;, &#x27;YB&#x27;];
+  var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
   var i = Math.floor(Math.log(bytes) / Math.log(k));
-  return (bytes / Math.pow(k, i)).toPrecision(3) + &#x27; &#x27; + sizes[i];
+  return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1715,20 +1708,20 @@ databases = databases.sort();
     <ul>
     <li>description and source-code<pre class="apidocCodePre">colsToGrid = function (cols) {
   // Generate list of GridFS buckets
-  // takes databases, filters by having suffix of &#x27;.files&#x27; and also a corresponding &#x27;.chunks&#x27; in the DB list, then returns just
+  // takes databases, filters by having suffix of '.files' and also a corresponding '.chunks' in the DB list, then returns just
 the prefix name.
 
   // cols comes in an object of all databases and all their collections
-  // return an object of all databases and all potential GridFS x.files &#x26; x.chunks
+  // return an object of all databases and all potential GridFS x.files &amp; x.chunks
 
   var rets = _.clone(cols);
 
-  _.each(rets, (val, key) =&#x3e; {
+  _.each(rets, (val, key) =&gt; {
     rets[key] = _.map(
-      _.filter(rets[key], col =&#x3e;
-        col.toString().substr(-6) === &#x27;.files&#x27; &#x26;&#x26; _.intersection(rets[key], [col.toString().slice(0, -6) + &#x27;.chunks&#x27;])
+      _.filter(rets[key], col =&gt;
+        col.toString().substr(-6) === '.files' &amp;&amp; _.intersection(rets[key], [col.toString().slice(0, -6) + '.chunks'])
       ),
-      col =&#x3e; col.toString().slice(0, -6)
+      col =&gt; col.toString().slice(0, -6)
     ).sort();
   });
 
@@ -1738,7 +1731,7 @@ the prefix name.
   };
 
   // View helper, sets local variables used in templates
-  appRouter.all(&#x27;*&#x27;, function (req, res, next) {
+  appRouter.all('*', function (req, res, next) {
 res.locals.baseHref       = buildBaseHref(req.originalUrl, req.url);
 res.locals.databases      = mongo.databases;
 res.locals.collections    = mongo.collections;
@@ -1769,9 +1762,9 @@ if (req.session.success) {
     target = target || [];
     dst = dst.concat(target);
     src.forEach(function (e, i) {
-      if (typeof dst[i] === &#x27;undefined&#x27;) {
+      if (typeof dst[i] === 'undefined') {
         dst[i] = e;
-      } else if (typeof e === &#x27;object&#x27;) {
+      } else if (typeof e === 'object') {
         dst[i] = exports.deepmerge(target[i], e);
       } else {
         if (target.indexOf(e) === -1) {
@@ -1780,14 +1773,14 @@ if (req.session.success) {
       }
     });
   } else {
-    if (target &#x26;&#x26; typeof target === &#x27;object&#x27;) {
+    if (target &amp;&amp; typeof target === 'object') {
       Object.keys(target).forEach(function (key) {
         dst[key] = target[key];
       });
     }
 
     Object.keys(src).forEach(function (key) {
-      if (typeof src[key] !== &#x27;object&#x27; || !src[key]) {
+      if (typeof src[key] !== 'object' || !src[key]) {
         dst[key] = src[key];
       } else {
         if (!target[key]) {
@@ -1809,14 +1802,14 @@ notifier.notify();
 
 try {
 // eslint-disable-next-line import/no-unresolved
-config = utils.<span class="apidocCodeKeywordSpan">deepmerge</span>(require(&#x27;./config.default&#x27;), require(&#x27;./config
-&#x27;));
+config = utils.<span class="apidocCodeKeywordSpan">deepmerge</span>(require('./config.default'), require('./config
+'));
 } catch (e) {
-if (e.code === &#x27;MODULE_NOT_FOUND&#x27;) {
-  console.log(&#x27;No custom config.js found, loading config.default.js&#x27;);
+if (e.code === 'MODULE_NOT_FOUND') {
+  console.log('No custom config.js found, loading config.default.js');
 } else {
-  console.error(clc.red(&#x27;Unable to load config.js!&#x27;));
-  console.error(clc.red(&#x27;Error is:&#x27;));
+  console.error(clc.red('Unable to load config.js!'));
+  console.error(clc.red('Error is:'));
   console.log(clc.red(e));
 ...</pre></li>
     </ul>
@@ -1836,13 +1829,13 @@ if (e.code === &#x27;MODULE_NOT_FOUND&#x27;) {
   var recurse = function (value) {
     var bytes = 0;
 
-    if (typeof value === &#x27;boolean&#x27;) {
+    if (typeof value === 'boolean') {
       bytes = 4;
-    } else if (typeof value === &#x27;string&#x27;) {
+    } else if (typeof value === 'string') {
       bytes = value.length * 2;
-    } else if (typeof value === &#x27;number&#x27;) {
+    } else if (typeof value === 'number') {
       bytes = 8;
-    } else if (typeof value === &#x27;object&#x27; &#x26;&#x26; objectList.indexOf(value) === -1) {
+    } else if (typeof value === 'object' &amp;&amp; objectList.indexOf(value) === -1) {
       objectList[objectList.length] = value;
 
       for (var i in value) {
@@ -1868,3 +1861,4 @@ if (e.code === &#x27;MODULE_NOT_FOUND&#x27;) {
     ]
 </div>
 </div>
+</body></html>
