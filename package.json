@@ -1,7 +1,7 @@
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
     "buildNpmdoc": "mongo-express",
-    "description": "api documentation for [mongo-express (v0.39.1)](https://github.com/mongo-express/mongo-express#readme) [![npm package](https://img.shields.io/npm/v/npmdoc-mongo-express.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-mongo-express) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-mongo-express.svg)](https://travis-ci.org/npmdoc/node-npmdoc-mongo-express)",
+    "description": "api documentation for [mongo-express (v0.39.2)](https://github.com/mongo-express/mongo-express#readme) [![npm package](https://img.shields.io/npm/v/npmdoc-mongo-express.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-mongo-express) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-mongo-express.svg)](https://travis-ci.org/npmdoc/node-npmdoc-mongo-express)",
     "devDependencies": {
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "mongo-express": "*",
@@ -36,5 +36,5 @@
         "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
         "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
-    "version": "0.0.2"
+    "version": "0.0.3"
 }

@@ -1,9 +1,11 @@
-# api documentation for  [mongo-express (v0.39.1)](https://github.com/mongo-express/mongo-express#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-mongo-express.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-mongo-express) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-mongo-express.svg)](https://travis-ci.org/npmdoc/node-npmdoc-mongo-express)
+# api documentation for  [mongo-express (v0.39.2)](https://github.com/mongo-express/mongo-express#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-mongo-express.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-mongo-express) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-mongo-express.svg)](https://travis-ci.org/npmdoc/node-npmdoc-mongo-express)
 #### Web-based admin interface for MongoDB
 
 [![NPM](https://nodei.co/npm/mongo-express.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/mongo-express)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-mongo-express/build/screenCapture.buildCi.browser.apidoc.html.png)](https://npmdoc.github.io/node-npmdoc-mongo-express/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-mongo-express/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-mongo-express/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-mongo-express/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-mongo-express/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-mongo-express/build/screenCapture.npmPackageListing.svg)
 
@@ -52,9 +54,9 @@
     "description": "Web-based admin interface for MongoDB",
     "devDependencies": {
         "assets-webpack-plugin": "^3.5.1",
-        "babel-core": "^6.23.1",
+        "babel-core": "^6.24.1",
         "babel-loader": "^6.3.2",
-        "babel-preset-es2015": "^6.22.0",
+        "babel-preset-es2015": "^6.24.1",
         "bootstrap": "^3.3.7",
         "chai": "3.5.0",
         "clean-webpack-plugin": "^0.1.15",
@@ -69,20 +71,20 @@
         "mocha": "3.0.2",
         "nodemon": "^1.11.0",
         "pre-commit": "1.1.3",
-        "renderjson": "^1.2.3",
+        "renderjson": "github:dozoisch/renderjson#cd0ef870c1298d53f09555da54e4bf57a0d21414",
         "supertest": "^3.0.0",
-        "webpack": "^2.2.1"
+        "webpack": "^2.4.1"
     },
     "directories": {},
     "dist": {
-        "shasum": "2362cda67eb7ff36c1567b81aaf1750df32e6a5c",
-        "tarball": "https://registry.npmjs.org/mongo-express/-/mongo-express-0.39.1.tgz"
+        "shasum": "85d74152cad5a95fa597ea01a330e8b6ed1abd98",
+        "tarball": "https://registry.npmjs.org/mongo-express/-/mongo-express-0.39.2.tgz"
     },
     "engines": {
         "node": ">=4.0.0",
         "npm": ">=3.0.0"
     },
-    "gitHead": "5790acfa5f4a49535dc577981c70e2efdd01f752",
+    "gitHead": "ee5b385667b5903d7b4e81482095e14c026ef161",
     "homepage": "https://github.com/mongo-express/mongo-express#readme",
     "keywords": [
         "admin",
@@ -132,19 +134,9 @@
         "test": "npm run mocha && npm run lint",
         "test-watch": "cross-env NODE_ENV=test mocha --watch --reporter spec"
     },
-    "version": "0.39.1"
+    "version": "0.39.2"
 }
 ```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module mongo-express](#apidoc.module.mongo-express)
-
-
-
-# <a name="apidoc.module.mongo-express"></a>[module mongo-express](#apidoc.module.mongo-express)
 
 
 
