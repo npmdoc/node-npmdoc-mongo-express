@@ -56,42 +56,6 @@
 
         <li>
 
-            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.csv">
-            function <span class="apidocSignatureSpan">mongo-express.</span>csv
-            <span class="apidocSignatureSpan">(data)</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.db">
-            function <span class="apidocSignatureSpan">mongo-express.</span>db
-            <span class="apidocSignatureSpan">(config)</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.middleware">
-            function <span class="apidocSignatureSpan">mongo-express.</span>middleware
-            <span class="apidocSignatureSpan">(config)</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.router">
-            function <span class="apidocSignatureSpan">mongo-express.</span>router
-            <span class="apidocSignatureSpan">(config)</span>
-            </a>
-
-        </li>
-
-        <li>
-
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mongo-express.</span>bson</span>
 
         </li>
@@ -183,32 +147,6 @@
 
     </ol></li>
 
-    <li class="apidocModuleLi"><a href="#apidoc.module.mongo-express.csv">module mongo-express.csv</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.csv.csv">
-            function <span class="apidocSignatureSpan">mongo-express.</span>csv
-            <span class="apidocSignatureSpan">(data)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.mongo-express.db">module mongo-express.db</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.db.db">
-            function <span class="apidocSignatureSpan">mongo-express.</span>db
-            <span class="apidocSignatureSpan">(config)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
     <li class="apidocModuleLi"><a href="#apidoc.module.mongo-express.filters">module mongo-express.filters</a><ol>
 
         <li>
@@ -280,32 +218,6 @@
 
     </ol></li>
 
-    <li class="apidocModuleLi"><a href="#apidoc.module.mongo-express.middleware">module mongo-express.middleware</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.middleware.middleware">
-            function <span class="apidocSignatureSpan">mongo-express.</span>middleware
-            <span class="apidocSignatureSpan">(config)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.mongo-express.router">module mongo-express.router</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.mongo-express.router.router">
-            function <span class="apidocSignatureSpan">mongo-express.</span>router
-            <span class="apidocSignatureSpan">(config)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
     <li class="apidocModuleLi"><a href="#apidoc.module.mongo-express.utils">module mongo-express.utils</a><ol>
 
         <li>
@@ -359,375 +271,6 @@
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.mongo-express" id="apidoc.module.mongo-express">module mongo-express</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.mongo-express.csv" id="apidoc.element.mongo-express.csv">
-        function <span class="apidocSignatureSpan">mongo-express.</span>csv
-        <span class="apidocSignatureSpan">(data)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">csv = function (data) {
-  for (var i = 0, ii = data.length; i &lt; ii; i++) {
-    var current = data[i];
-    handleObject(current);
-    data[i] = flat(current, { safe: true });
-  }
-  return csv({ data: data });
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.mongo-express.db" id="apidoc.element.mongo-express.db">
-        function <span class="apidocSignatureSpan">mongo-express.</span>db
-        <span class="apidocSignatureSpan">(config)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">db = function (config) {
-  // set up database stuff
-  let host = config.mongodb.server  || 'localhost';
-  let port = config.mongodb.port    || mongodb.Connection.DEFAULT_PORT;
-
-  if (config.mongodb.useSSL) {
-    console.error('Please update config file to use mongodb.ssl instead of mongodb.useSSL. Copying value for now.');
-    config.mongodb.ssl = config.mongodb.useSSL;
-  }
-
-  let dbOptions = {
-    auto_reconnect: config.mongodb.autoReconnect,
-    poolSize:       config.mongodb.poolSize,
-    ssl:            config.mongodb.ssl,
-    sslValidate:    config.mongodb.sslValidate,
-    sslCA:          config.mongodb.sslCA,
-  };
-
-  let db;
-
-  if (Array.isArray(host)) {
-    host = host.map(function (host) {
-      return new mongodb.Server(host, port, dbOptions);
-    });
-
-    db = new mongodb.Db('local', new mongodb.ReplSet(host), { safe: true, w: 0 });
-  } else {
-    db = new mongodb.Db('local', new mongodb.Server(host, port, dbOptions), { safe: true });
-  }
-
-  let collections     = {};
-  let connections     = {};
-  let databases       = [];
-
-  let adminDb = db.admin();
-  let mainConn  = db; // main db connection
-
-  // update the collections list
-  let updateCollections = function (db, dbName, callback) {
-    db.listCollections().toArray(function (err, result) {
-      let names = [];
-
-      for (let r in result) {
-        names.push(result[r].name);
-      }
-
-      collections[dbName] = names.sort();
-
-      if (callback) {
-        callback(err);
-      }
-    });
-  };
-
-  // update database list
-  let updateDatabases = function (admin, callback) {
-
-    admin.listDatabases(function (err, dbs) {
-      databases = [];
-      if (err) {
-        //TODO: handle error
-        console.error(err);
-        databases = _.map(config.mongodb.auth, 'database');
-      } else {
-        for (let i = 0; i &lt; dbs.databases.length; i++) {
-          let dbName = dbs.databases[i].name;
-
-          if (config.mongodb.whitelist.length !== 0) {
-            if (!_.includes(config.mongodb.whitelist, dbName)) {
-              continue;
-            }
-          }
-
-          if (config.mongodb.blacklist.length !== 0) {
-            if (_.includes(config.mongodb.blacklist, dbName)) {
-              continue;
-            }
-          }
-
-          connections[dbName] = mainConn.db(dbName);
-          databases.push(dbName);
-          updateCollections(connections[dbName], dbName);
-        }
-      }
-
-      //Sort database names
-      databases = databases.sort();
-
-      if (callback) {
-        callback(databases);
-      }
-    });
-  };
-
-  // connect to mongodb database
-  db.open(function (err, db) {
-    if (err) {
-      throw err;
-    }
-
-    if (config.options.console) console.log('Database connected');
-
-    mainConn = db;
-
-    //Check if admin features are on
-    if (config.mongodb.admin === true) {
-
-      if (config.mongodb.adminUsername.length === 0) {
-        if (config.options.console) console.log('Admin Database connected');
-        updateDatabases(adminDb);
-      } else {
-        //auth details were supplied, authenticate admin account with them
-        adminDb.authenticate(config.mongodb.adminUsername, config.mongodb.adminPassword, function (err) {
-          if (err) {
-            //TODO: handle error
-            console.error(err);
-          }
-
-          if (config.options.console) console.log('Admin Database connected');
-          updateDatabases(adminDb);
-        });
-      }
-    } else {
-      //Regular user authentication
-      if (typeof config.mongodb.auth === 'undefined' || config.mongodb.auth.length === 0) {
-        throw new Error('Add auth details to config or turn on admin!');
-      }
-
-      async.forEachSeries(config.mongodb.auth, function (auth, callback) {
-        if (config.options.console) console.log('Connecting to ' + auth.database + '...');
-        connections[auth.database] = mainConn.db(auth.database);
-        databases.push(auth.database);
-
-        if (typeof auth.username !== 'undefined' &amp;&amp; auth.username.length !== 0) {
-          connections[auth.database].authenticate(auth.username, auth.password, function (err, success) {
-            if (err) { ...</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-
-    if (config.mongodb.blacklist.length !== 0) {
-      if (_.includes(config.mongodb.blacklist, dbName)) {
-        continue;
-      }
-    }
-
-    connections[dbName] = mainConn.<span class="apidocCodeKeywordSpan">db</span>(dbName);
-    databases.push(dbName);
-    updateCollections(connections[dbName], dbName);
-  }
-}
-
-//Sort database names
-databases = databases.sort();
-...</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.mongo-express.middleware" id="apidoc.element.mongo-express.middleware">
-        function <span class="apidocSignatureSpan">mongo-express.</span>middleware
-        <span class="apidocSignatureSpan">(config)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">middleware = function (config) {
-  const app = express();
-
-  app.locals.assets = assets;
-
-  //Set up swig
-  const swigOptions = {
-    cache: process.env.NODE_ENV === 'production' ? 'memory' : false,
-  };
-  const swigEngine = new swig.Swig(swigOptions);
-  app.engine('html', swigEngine.renderFile);
-  Object.keys(swigFilters).forEach(function (name) {
-    swig.setFilter(name, swigFilters[name]);
-  });
-
-  //App configuration
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'html');
-  app.set('view options', { layout: false });
-
-  app.use('/', router(config));
-
-  app.set('read_only',      config.options.readOnly      || false);
-  app.set('gridFSEnabled',  config.options.gridFSEnabled || false);
-
-  return app;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.mongo-express.router" id="apidoc.element.mongo-express.router">
-        function <span class="apidocSignatureSpan">mongo-express.</span>router
-        <span class="apidocSignatureSpan">(config)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">router = function (config) {
-  // appRouter configuration
-  const appRouter = express.Router();
-  const mongo = db(config);
-
-  if (config.useBasicAuth) {
-    appRouter.use(basicAuth(config.basicAuth.username, config.basicAuth.password));
-  }
-
-  appRouter.use(favicon(__dirname + '/../public/images/favicon.ico'));
-
-  appRouter.use(logger('dev', config.options.logger));
-
-  appRouter.use('/public', express.static(__dirname + '/../build/'));
-
-  // Set request size limit
-  appRouter.use(bodyParser.urlencoded({
-    extended: true,
-    limit: config.site.requestSizeLimit,
-  }));
-
-  appRouter.use(cookieParser(config.site.cookieSecret));
-
-  appRouter.use(session({
-    key: config.site.cookieKeyName,
-    resave: true,
-    saveUninitialized: true,
-    secret: config.site.sessionSecret,
-  }));
-
-  appRouter.use(methodOverride(function (req) {
-    if (req.body &amp;&amp; typeof req.body === 'object' &amp;&amp; '_method' in req.body) {
-      // look in urlencoded POST bodies and delete it
-      const method = req.body._method;
-      delete req.body._method;
-      return method;
-    }
-  }));
-
-  if (process.env.NODE_ENV === 'development') {
-    appRouter.use(errorHandler());
-  }
-
-  const addTrailingSlash = function (s) {
-    return s + (s[s.length - 1] === '/' ? '' : '/');
-  };
-  const buildBaseHref = function (originalUrl, reqUrl) {
-    if (reqUrl === '/') {
-      return addTrailingSlash(originalUrl);
-    }
-    const idx = originalUrl.lastIndexOf(reqUrl);
-    const rootPath = originalUrl.substring(0, idx);
-    return addTrailingSlash(rootPath);
-  };
-
-  // View helper, sets local variables used in templates
-  appRouter.all('*', function (req, res, next) {
-    res.locals.baseHref       = buildBaseHref(req.originalUrl, req.url);
-    res.locals.databases      = mongo.databases;
-    res.locals.collections    = mongo.collections;
-    res.locals.gridFSBuckets  = utils.colsToGrid(mongo.collections);
-
-    // Flash messages
-    if (req.session.success) {
-      res.locals.messageSuccess = req.session.success;
-      delete req.session.success;
-    }
-
-    if (req.session.error) {
-      res.locals.messageError = req.session.error;
-      delete req.session.error;
-    }
-
-    if (config.mongodb.admin !== true) return next();
-
-    mongo.updateDatabases(mongo.adminDb, function (databases) {
-      mongo.databases = databases;
-      res.locals.databases = mongo.databases;
-      return next();
-    });
-  });
-
-  // route param pre-conditions
-  appRouter.param('database', function (req, res, next, id) {
-    //Make sure database exists
-    if (!_.includes(mongo.databases, id)) {
-      req.session.error = 'Database not found!';
-      return res.redirect(res.locals.baseHref);
-    }
-
-    req.dbName = id;
-    res.locals.dbName = id;
-
-    if (mongo.connections[id] !== undefined) {
-      req.db = mongo.connections[id];
-    } else {
-      mongo.connections[id] = mongo.mainConn.db(id);
-      req.db = mongo.connections[id];
-    }
-
-    next();
-  });
-
-  // :collection param MUST be preceded by a :database param
-  appRouter.param('collection', function (req, res, next, id) {
-    //Make sure collection exists
-
-    if (!_.includes(mongo.collections[req.dbName], id)) {
-      req.session.error = 'Collection not found!';
-      return res.redirect(res.locals.baseHref + 'db/' + req.dbName);
-    }
-
-    req.collectionName = id;
-    res.locals.collectionName = id;
-    res.locals.collections = mongo.collections[req.dbName];
-    res.locals.gridFSBuckets = utils.colsToGrid(mongo.collections[req.dbName]);
-
-    mongo.connections[req.dbName].collection(id, function (err, coll) {
-      if (err || coll === null) {
-        req.session.error = 'Collection not found!';
-        return res.redirect(res.locals.baseHref + 'db/' + req.dbName);
-      }
-
-      req.collection = coll;
-
-      next();
-    });
-  });
-
-  // :document param MUST be preceded by a :collection param
-  appRouter.param('document', function (req, res, next, id) {
-    if (id === 'undefined' || id === undefined) {
-      req.session.error = 'Document lacks an _id!';
-      return res.redirect(res.locals.baseHref + 'db/' + req.dbName + '/' + req.collectionName); ...</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
 
 
 
@@ -807,7 +350,23 @@ return sandbox.doc;
   var sandbox = exports.getSandbox();
   return sandbox.ObjectID(string);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        // If type == N, convert value to number
+        N: function (value) {
+return Number(value);
+        },
+        // If type == O, convert value to ObjectID
+        O: function (value) {
+// Hex input
+var result = bson.<span class="apidocCodeKeywordSpan">hexToObjectId</span>(value);
+
+if (!result) {
+  // Basic validation
+  // Check we have ObjectID() wrapper
+  if (
+    value.toUpperCase().indexOf('OBJECTID(') === -1 ||   // missing the opening 'ObjectID('
+    value.indexOf(')') === -1                            // missing the closing '('
+...</pre></li>
     </ul>
 
 
@@ -864,7 +423,23 @@ exports.toSafeBSON = function (string) {
   sJson = sJson.replace(/ISODate\(([^)]+)\)/g, '$1');
   return sJson;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+exp.exportCollection = function (req, res) {
+  req.collection.find().toArray(function (err, items) {
+    res.setHeader('Content-disposition', 'attachment; filename=' + req.collectionName + '.json');
+    res.setHeader('Content-type', 'application/json');
+    var aItems = [];
+    for (var i in items) {
+      var docStr = bson.<span class="apidocCodeKeywordSpan">toJsonString</span>(items[i]);
+      aItems.push(docStr);
+    }
+
+    res.write(aItems.join(os.EOL));
+    res.end();
+  });
+};
+...</pre></li>
     </ul>
 
 
@@ -938,7 +513,23 @@ var Timestamp = function (high, low) {
     return null;
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    value = converters[type](value);
+
+    // 2. then set query to it
+    result = {};
+    result[key] = value;
+  } else if (jsonQuery) {
+    // if it is a complex query, take it as is;
+    result = bson.<span class="apidocCodeKeywordSpan">toSafeBSON</span>(jsonQuery);
+    if (result === null) {
+      throw new Error('Query entered is not valid');
+    }
+  }
+  // otherwise leave as null;
+  return result;
+};
+...</pre></li>
     </ul>
 
 
@@ -970,200 +561,6 @@ if (input &lt; 1024) {
 } else if (input &lt; 1024 * 1024 * 1024) {
   input = Math.round((input / (1024 * 1024)) * 100) / 100;
   return input.toString() + ' MB';
-...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.mongo-express.csv" id="apidoc.module.mongo-express.csv">module mongo-express.csv</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.mongo-express.csv.csv" id="apidoc.element.mongo-express.csv.csv">
-        function <span class="apidocSignatureSpan">mongo-express.</span>csv
-        <span class="apidocSignatureSpan">(data)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">csv = function (data) {
-  for (var i = 0, ii = data.length; i &lt; ii; i++) {
-    var current = data[i];
-    handleObject(current);
-    data[i] = flat(current, { safe: true });
-  }
-  return csv({ data: data });
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.mongo-express.db" id="apidoc.module.mongo-express.db">module mongo-express.db</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.mongo-express.db.db" id="apidoc.element.mongo-express.db.db">
-        function <span class="apidocSignatureSpan">mongo-express.</span>db
-        <span class="apidocSignatureSpan">(config)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">db = function (config) {
-  // set up database stuff
-  let host = config.mongodb.server  || 'localhost';
-  let port = config.mongodb.port    || mongodb.Connection.DEFAULT_PORT;
-
-  if (config.mongodb.useSSL) {
-    console.error('Please update config file to use mongodb.ssl instead of mongodb.useSSL. Copying value for now.');
-    config.mongodb.ssl = config.mongodb.useSSL;
-  }
-
-  let dbOptions = {
-    auto_reconnect: config.mongodb.autoReconnect,
-    poolSize:       config.mongodb.poolSize,
-    ssl:            config.mongodb.ssl,
-    sslValidate:    config.mongodb.sslValidate,
-    sslCA:          config.mongodb.sslCA,
-  };
-
-  let db;
-
-  if (Array.isArray(host)) {
-    host = host.map(function (host) {
-      return new mongodb.Server(host, port, dbOptions);
-    });
-
-    db = new mongodb.Db('local', new mongodb.ReplSet(host), { safe: true, w: 0 });
-  } else {
-    db = new mongodb.Db('local', new mongodb.Server(host, port, dbOptions), { safe: true });
-  }
-
-  let collections     = {};
-  let connections     = {};
-  let databases       = [];
-
-  let adminDb = db.admin();
-  let mainConn  = db; // main db connection
-
-  // update the collections list
-  let updateCollections = function (db, dbName, callback) {
-    db.listCollections().toArray(function (err, result) {
-      let names = [];
-
-      for (let r in result) {
-        names.push(result[r].name);
-      }
-
-      collections[dbName] = names.sort();
-
-      if (callback) {
-        callback(err);
-      }
-    });
-  };
-
-  // update database list
-  let updateDatabases = function (admin, callback) {
-
-    admin.listDatabases(function (err, dbs) {
-      databases = [];
-      if (err) {
-        //TODO: handle error
-        console.error(err);
-        databases = _.map(config.mongodb.auth, 'database');
-      } else {
-        for (let i = 0; i &lt; dbs.databases.length; i++) {
-          let dbName = dbs.databases[i].name;
-
-          if (config.mongodb.whitelist.length !== 0) {
-            if (!_.includes(config.mongodb.whitelist, dbName)) {
-              continue;
-            }
-          }
-
-          if (config.mongodb.blacklist.length !== 0) {
-            if (_.includes(config.mongodb.blacklist, dbName)) {
-              continue;
-            }
-          }
-
-          connections[dbName] = mainConn.db(dbName);
-          databases.push(dbName);
-          updateCollections(connections[dbName], dbName);
-        }
-      }
-
-      //Sort database names
-      databases = databases.sort();
-
-      if (callback) {
-        callback(databases);
-      }
-    });
-  };
-
-  // connect to mongodb database
-  db.open(function (err, db) {
-    if (err) {
-      throw err;
-    }
-
-    if (config.options.console) console.log('Database connected');
-
-    mainConn = db;
-
-    //Check if admin features are on
-    if (config.mongodb.admin === true) {
-
-      if (config.mongodb.adminUsername.length === 0) {
-        if (config.options.console) console.log('Admin Database connected');
-        updateDatabases(adminDb);
-      } else {
-        //auth details were supplied, authenticate admin account with them
-        adminDb.authenticate(config.mongodb.adminUsername, config.mongodb.adminPassword, function (err) {
-          if (err) {
-            //TODO: handle error
-            console.error(err);
-          }
-
-          if (config.options.console) console.log('Admin Database connected');
-          updateDatabases(adminDb);
-        });
-      }
-    } else {
-      //Regular user authentication
-      if (typeof config.mongodb.auth === 'undefined' || config.mongodb.auth.length === 0) {
-        throw new Error('Add auth details to config or turn on admin!');
-      }
-
-      async.forEachSeries(config.mongodb.auth, function (auth, callback) {
-        if (config.options.console) console.log('Connecting to ' + auth.database + '...');
-        connections[auth.database] = mainConn.db(auth.database);
-        databases.push(auth.database);
-
-        if (typeof auth.username !== 'undefined' &amp;&amp; auth.username.length !== 0) {
-          connections[auth.database].authenticate(auth.username, auth.password, function (err, success) {
-            if (err) { ...</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-
-    if (config.mongodb.blacklist.length !== 0) {
-      if (_.includes(config.mongodb.blacklist, dbName)) {
-        continue;
-      }
-    }
-
-    connections[dbName] = mainConn.<span class="apidocCodeKeywordSpan">db</span>(dbName);
-    databases.push(dbName);
-    updateCollections(connections[dbName], dbName);
-  }
-}
-
-//Sort database names
-databases = databases.sort();
 ...</pre></li>
     </ul>
 
@@ -1467,201 +864,6 @@ databases = databases.sort();
 </div>
 
 <div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.mongo-express.middleware" id="apidoc.module.mongo-express.middleware">module mongo-express.middleware</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.mongo-express.middleware.middleware" id="apidoc.element.mongo-express.middleware.middleware">
-        function <span class="apidocSignatureSpan">mongo-express.</span>middleware
-        <span class="apidocSignatureSpan">(config)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">middleware = function (config) {
-  const app = express();
-
-  app.locals.assets = assets;
-
-  //Set up swig
-  const swigOptions = {
-    cache: process.env.NODE_ENV === 'production' ? 'memory' : false,
-  };
-  const swigEngine = new swig.Swig(swigOptions);
-  app.engine('html', swigEngine.renderFile);
-  Object.keys(swigFilters).forEach(function (name) {
-    swig.setFilter(name, swigFilters[name]);
-  });
-
-  //App configuration
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'html');
-  app.set('view options', { layout: false });
-
-  app.use('/', router(config));
-
-  app.set('read_only',      config.options.readOnly      || false);
-  app.set('gridFSEnabled',  config.options.gridFSEnabled || false);
-
-  return app;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.mongo-express.router" id="apidoc.module.mongo-express.router">module mongo-express.router</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.mongo-express.router.router" id="apidoc.element.mongo-express.router.router">
-        function <span class="apidocSignatureSpan">mongo-express.</span>router
-        <span class="apidocSignatureSpan">(config)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">router = function (config) {
-  // appRouter configuration
-  const appRouter = express.Router();
-  const mongo = db(config);
-
-  if (config.useBasicAuth) {
-    appRouter.use(basicAuth(config.basicAuth.username, config.basicAuth.password));
-  }
-
-  appRouter.use(favicon(__dirname + '/../public/images/favicon.ico'));
-
-  appRouter.use(logger('dev', config.options.logger));
-
-  appRouter.use('/public', express.static(__dirname + '/../build/'));
-
-  // Set request size limit
-  appRouter.use(bodyParser.urlencoded({
-    extended: true,
-    limit: config.site.requestSizeLimit,
-  }));
-
-  appRouter.use(cookieParser(config.site.cookieSecret));
-
-  appRouter.use(session({
-    key: config.site.cookieKeyName,
-    resave: true,
-    saveUninitialized: true,
-    secret: config.site.sessionSecret,
-  }));
-
-  appRouter.use(methodOverride(function (req) {
-    if (req.body &amp;&amp; typeof req.body === 'object' &amp;&amp; '_method' in req.body) {
-      // look in urlencoded POST bodies and delete it
-      const method = req.body._method;
-      delete req.body._method;
-      return method;
-    }
-  }));
-
-  if (process.env.NODE_ENV === 'development') {
-    appRouter.use(errorHandler());
-  }
-
-  const addTrailingSlash = function (s) {
-    return s + (s[s.length - 1] === '/' ? '' : '/');
-  };
-  const buildBaseHref = function (originalUrl, reqUrl) {
-    if (reqUrl === '/') {
-      return addTrailingSlash(originalUrl);
-    }
-    const idx = originalUrl.lastIndexOf(reqUrl);
-    const rootPath = originalUrl.substring(0, idx);
-    return addTrailingSlash(rootPath);
-  };
-
-  // View helper, sets local variables used in templates
-  appRouter.all('*', function (req, res, next) {
-    res.locals.baseHref       = buildBaseHref(req.originalUrl, req.url);
-    res.locals.databases      = mongo.databases;
-    res.locals.collections    = mongo.collections;
-    res.locals.gridFSBuckets  = utils.colsToGrid(mongo.collections);
-
-    // Flash messages
-    if (req.session.success) {
-      res.locals.messageSuccess = req.session.success;
-      delete req.session.success;
-    }
-
-    if (req.session.error) {
-      res.locals.messageError = req.session.error;
-      delete req.session.error;
-    }
-
-    if (config.mongodb.admin !== true) return next();
-
-    mongo.updateDatabases(mongo.adminDb, function (databases) {
-      mongo.databases = databases;
-      res.locals.databases = mongo.databases;
-      return next();
-    });
-  });
-
-  // route param pre-conditions
-  appRouter.param('database', function (req, res, next, id) {
-    //Make sure database exists
-    if (!_.includes(mongo.databases, id)) {
-      req.session.error = 'Database not found!';
-      return res.redirect(res.locals.baseHref);
-    }
-
-    req.dbName = id;
-    res.locals.dbName = id;
-
-    if (mongo.connections[id] !== undefined) {
-      req.db = mongo.connections[id];
-    } else {
-      mongo.connections[id] = mongo.mainConn.db(id);
-      req.db = mongo.connections[id];
-    }
-
-    next();
-  });
-
-  // :collection param MUST be preceded by a :database param
-  appRouter.param('collection', function (req, res, next, id) {
-    //Make sure collection exists
-
-    if (!_.includes(mongo.collections[req.dbName], id)) {
-      req.session.error = 'Collection not found!';
-      return res.redirect(res.locals.baseHref + 'db/' + req.dbName);
-    }
-
-    req.collectionName = id;
-    res.locals.collectionName = id;
-    res.locals.collections = mongo.collections[req.dbName];
-    res.locals.gridFSBuckets = utils.colsToGrid(mongo.collections[req.dbName]);
-
-    mongo.connections[req.dbName].collection(id, function (err, coll) {
-      if (err || coll === null) {
-        req.session.error = 'Collection not found!';
-        return res.redirect(res.locals.baseHref + 'db/' + req.dbName);
-      }
-
-      req.collection = coll;
-
-      next();
-    });
-  });
-
-  // :document param MUST be preceded by a :collection param
-  appRouter.param('document', function (req, res, next, id) {
-    if (id === 'undefined' || id === undefined) {
-      req.session.error = 'Document lacks an _id!';
-      return res.redirect(res.locals.baseHref + 'db/' + req.dbName + '/' + req.collectionName); ...</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.mongo-express.utils" id="apidoc.module.mongo-express.utils">module mongo-express.utils</a></h1>
 
 
@@ -1694,7 +896,23 @@ databases = databases.sort();
   var i = Math.floor(Math.log(bytes) / Math.log(k));
   return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+// Prep items with stubs so as not to send large info down the wire
+for (let prop in items[i]) {
+  if (utils.roughSizeOfObject(items[i][prop]) &gt; config.options.maxPropSize) {
+    items[i][prop] = {
+      attribu: prop,
+      display: '*** LARGE PROPERTY ***',
+      humanSz: utils.<span class="apidocCodeKeywordSpan">bytesToSize</span>(utils.roughSizeOfObject(items[i][prop])),
+      maxSize: utils.bytesToSize(config.options.maxPropSize),
+      preview: JSON.stringify(items[i][prop]).substr(0, 25),
+      roughSz: utils.roughSizeOfObject(items[i][prop]),
+      _id: items[i]._id,
+    };
+  }
+}
+...</pre></li>
     </ul>
 
 
@@ -1849,7 +1067,23 @@ if (e.code === 'MODULE_NOT_FOUND') {
 
   return recurse(object);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+            var docs    = [];
+            var columns = [];
+
+            for (var i in items) {
+
+// Prep items with stubs so as not to send large info down the wire
+for (let prop in items[i]) {
+  if (utils.<span class="apidocCodeKeywordSpan">roughSizeOfObject</span>(items[i][prop]) &gt; config.options.maxPropSize) {
+    items[i][prop] = {
+      attribu: prop,
+      display: '*** LARGE PROPERTY ***',
+      humanSz: utils.bytesToSize(utils.roughSizeOfObject(items[i][prop])),
+      maxSize: utils.bytesToSize(config.options.maxPropSize),
+      preview: JSON.stringify(items[i][prop]).substr(0, 25),
+      roughSz: utils.roughSizeOfObject(items[i][prop]),
+...</pre></li>
     </ul>
 
 
