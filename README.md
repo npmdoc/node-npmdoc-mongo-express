@@ -1,4 +1,7 @@
-# api documentation for  [mongo-express (v0.39.2)](https://github.com/mongo-express/mongo-express#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-mongo-express.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-mongo-express) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-mongo-express.svg)](https://travis-ci.org/npmdoc/node-npmdoc-mongo-express)
+# npmdoc-mongo-express
+
+#### basic api documentation for  [mongo-express (v0.39.2)](https://github.com/mongo-express/mongo-express#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-mongo-express.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-mongo-express) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-mongo-express.svg)](https://travis-ci.org/npmdoc/node-npmdoc-mongo-express)
+
 #### Web-based admin interface for MongoDB
 
 [![NPM](https://nodei.co/npm/mongo-express.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/mongo-express)
